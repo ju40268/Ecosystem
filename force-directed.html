@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <meta charset="utf-8">
 
 <svg width="960" height="600"></svg>
@@ -32,34 +33,58 @@
             node.fy = null
         })
 
-
         function isNeighborLink(node, link) {
-            return link.target.name === node.name || link.source.name === node.name
+//            for default color displaying
+            if(link.target === undefined) {
+                switch(links[link].type) {
+                    case 0:
+                        return 'gray';
+                        break;
+                    case 1:
+                        return 'orange';
+                        break;
+                    case 2:
+                        return 'red';
+                        break;
+                    case 6:
+                        return '#E5E5E5';
+                        break;
+                    case 4:
+                        return 'blue';
+                        break;
+                    case 5:
+                        return 'purple';
+                        break;
+                    case 3:
+                        return 'cyan';
+                        break;
+                }
+            }
+//            for selected node, display the node and the links as pink
+            else{
+                if(link.target.name === node.name || link.source.name === node.name) return 'pink'
+                else return '#E5E5E5'
+            }
         }
         function getNodeColor(node, neighbors) {
-//            if selected, display as pink color
             if (Array.isArray(neighbors) && neighbors.indexOf(node.name) > -1) {
                     return 'pink';
             }
-//            orginal color
-            if(node.risk > 0.66) return 'red'
+//            orginal node color
+            if(node.risk > 0.66) return 'red' //danger
             else if(node.risk > 0.33) return 'yellow'
             else return 'green'
         }
         function getLinkColor(node, link) {
-            return isNeighborLink(node, link) ? 'green' : '#E5E5E5'
+            return isNeighborLink(node, link)
         }
         function getTextColor(node, neighbors) {
-            return Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1 ? 'green' : 'black'
+            return Array.isArray(neighbors) && neighbors.indexOf(node.name) > -1 ? 'red' : 'black'
         }
 
         function selectNode(selectedNode) {
             console.log("On click event")
-//            console.log(selectedNode)
-//            console.log(selectedNode.index)
             var neighbors = getNeighbors(selectedNode)
-            // we modify the styles to highlight selected nodes
-            console.log(neighbors)
             nodeElements.attr('fill', function (node) { return getNodeColor(node, neighbors) })
             textElements.attr('fill', function (node) { return getTextColor(node, neighbors) })
             linkElements.attr('stroke', function (link) { return getLinkColor(selectedNode, link) })
@@ -76,7 +101,6 @@
                     }
                     return neighbors
                 },
-
                 [node.name]
             )
         }
@@ -95,47 +119,11 @@
         // simulation setup with all forces
         var simulation = d3
             .forceSimulation()
-//            .force('link', d3.forceLink())
-//            .force('link', d3.forceLink().id(function(d) {
-//                return d
-//            })).strength()
             .force('link', linkForce)
-            .force('charge', d3.forceManyBody().strength(-100))
-//            .force("link", d3.forceLink(links).distance(200))
+            .force('charge', d3.forceManyBody().strength(-150))
             .force('center', d3.forceCenter(width / 2, height / 2))
 
 
-//        function getNodeColor(node) {
-//            if(node.risk > 0.66) return 'red'
-//            else if(node.risk > 0.33) return 'yellow'
-//            else return 'green'
-//        }
-        function getLinkColor(link) {
-            switch(link.type) {
-                case 0:
-                    return 'gray';
-                    break;
-                case 1:
-                    return 'orange';
-                    break;
-                case 2:
-                    return 'red';
-                    break;
-                case 6:
-//                    return 'gray';
-                    return '#E5E5E5';
-                    break;
-                case 4:
-                    return 'blue';
-                    break;
-                case 5:
-                    return 'purple';
-                    break;
-                case 3:
-                    return 'cyan';
-                    break;
-            }
-        }
 
         var linkElements = svg.append("g")
             .attr("class", "links")
@@ -151,11 +139,31 @@
             .selectAll("circle")
             .data(nodes)
             .enter().append("circle")
-//            .attr("r", 10)
             .attr("fill", getNodeColor)
             .attr("r", function(d) { return d.value * 0.001; })//what you choose to size * ratio
             .call(dragDrop)
-            .on('click', selectNode);
+            .on('click', selectNode)
+//            .on("mouseover", function(d) {
+//                console.log("mouse over")
+//                console.log(d)
+//                var info = d3.select(this).append('text')
+//                    .attr("class", "texts")
+////                    .text(d.name)
+//                    .attr("font-size", 15)
+//                    .attr("dx", 15)
+//                    .attr("dy", 4)
+//                    .classed('info', true)
+//                    .text('More info');
+//            })
+            .on("mouseover", function(d) {
+                console.log("mouse over")
+                d3.select(this).select("texts").style("visibility", "visible")
+            })
+            .on("mouseout", function() {
+                // Remove the info text on mouse out.
+                console.log("mouse out")
+                d3.select(this).select('text.info').remove();
+            });
 
         var textElements = svg.append("g")
             .attr("class", "texts")
@@ -164,7 +172,7 @@
             .enter().append("text")
             .text(function (node) {
                 if(node.value > 3000)
-                    return  node.name
+                    return node.name
             })
             .attr("font-size", 15)
             .attr("dx", 15)
