@@ -5,19 +5,6 @@
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
-    //    var nodes = [
-    //        { id: "mammal", group: 0, label: "Mammals", level: 1 },
-    //        { id: "dog"   , group: 0, label: "Dogs"   , level: 2 },
-    //        { id: "cat"   , group: 0, label: "Cats"   , level: 2 },
-    //        { id: "fox"   , group: 0, label: "Foxes"  , level: 2 },
-    //        { id: "elk"   , group: 0, label: "Elk"    , level: 2 },
-    //        { id: "insect", group: 1, label: "Insects", level: 1 },
-    //        { id: "ant"   , group: 1, label: "Ants"   , level: 2 },
-    //        { id: "bee"   , group: 1, label: "Bees"   , level: 2 },
-    //        { id: "fish"  , group: 2, label: "Fish"   , level: 1 },
-    //        { id: "carp"  , group: 2, label: "Carp"   , level: 2 },
-    //        { id: "pike"  , group: 2, label: "Pikes"  , level: 2 }
-    //    ]
 
     var width = window.innerWidth
     var height = window.innerHeight
@@ -26,17 +13,84 @@
     svg.attr('width', width).attr('height', height)
 
     d3.json("expertKnowledgeNodesType0AllEdges.json", function (error, data) {
-        console.log(data)
         nodes = data.nodes
         links = data.links
-        console.log(nodes)
-        console.log(links)
+
+
+        var dragDrop = d3.drag().on('start', function (node) {
+            node.fx = node.x
+            node.fy = node.y
+        }).on('drag', function (node) {
+            simulation.alphaTarget(0.7).restart()
+            node.fx = d3.event.x
+            node.fy = d3.event.y
+        }).on('end', function (node) {
+            if (!d3.event.active) {
+                simulation.alphaTarget(0)
+            }
+            node.fx = null
+            node.fy = null
+        })
+
+
+        function isNeighborLink(node, link) {
+            return link.target.name === node.name || link.source.name === node.name
+        }
+        function getNodeColor(node, neighbors) {
+//            if selected, display as pink color
+            if (Array.isArray(neighbors) && neighbors.indexOf(node.name) > -1) {
+                    return 'pink';
+            }
+//            orginal color
+            if(node.risk > 0.66) return 'red'
+            else if(node.risk > 0.33) return 'yellow'
+            else return 'green'
+        }
+        function getLinkColor(node, link) {
+            return isNeighborLink(node, link) ? 'green' : '#E5E5E5'
+        }
+        function getTextColor(node, neighbors) {
+            return Array.isArray(neighbors) && neighbors.indexOf(node.id) > -1 ? 'green' : 'black'
+        }
+
+        function selectNode(selectedNode) {
+            console.log("On click event")
+//            console.log(selectedNode)
+//            console.log(selectedNode.index)
+            var neighbors = getNeighbors(selectedNode)
+            // we modify the styles to highlight selected nodes
+            console.log(neighbors)
+            nodeElements.attr('fill', function (node) { return getNodeColor(node, neighbors) })
+            textElements.attr('fill', function (node) { return getTextColor(node, neighbors) })
+            linkElements.attr('stroke', function (link) { return getLinkColor(selectedNode, link) })
+        }
+
+        function getNeighbors(node) {
+            console.log("Get neighbors node")
+            console.log(node.index)
+            return links.reduce(function (neighbors, link) {
+                    if (link.target.index === node.index) {
+                        neighbors.push(link.source.name)
+                    } else if (link.source.index === node.index) {
+                        neighbors.push(link.target.name)
+                    }
+                    return neighbors
+                },
+
+                [node.name]
+            )
+        }
+
 
         var linkForce = d3
             .forceLink()
 //            .id(link => link.id)
                     //             for the force strength, make some changes
-            .strength(link => Math.max(link.weight) - link.weight)
+//            .strength(link => Math.max(link.weight) - link.weight)
+//            .strength(link => link.weight)
+            .distance(link => link.weight)
+
+
 
         // simulation setup with all forces
         var simulation = d3
@@ -46,15 +100,16 @@
 //                return d
 //            })).strength()
             .force('link', linkForce)
-            .force('charge', d3.forceManyBody().strength(-8))
+            .force('charge', d3.forceManyBody().strength(-100))
+//            .force("link", d3.forceLink(links).distance(200))
             .force('center', d3.forceCenter(width / 2, height / 2))
 
 
-        function getNodeColor(node) {
-            if(node.risk > 0.66) return 'red'
-            else if(node.risk > 0.33) return 'yellow'
-            else return 'green'
-        }
+//        function getNodeColor(node) {
+//            if(node.risk > 0.66) return 'red'
+//            else if(node.risk > 0.33) return 'yellow'
+//            else return 'green'
+//        }
         function getLinkColor(link) {
             switch(link.type) {
                 case 0:
@@ -67,7 +122,8 @@
                     return 'red';
                     break;
                 case 6:
-                    return 'gray';
+//                    return 'gray';
+                    return '#E5E5E5';
                     break;
                 case 4:
                     return 'blue';
@@ -97,7 +153,9 @@
             .enter().append("circle")
 //            .attr("r", 10)
             .attr("fill", getNodeColor)
-            .attr("r", function(d) { return d.value * 0.001; });//what you choose to size * ratio
+            .attr("r", function(d) { return d.value * 0.001; })//what you choose to size * ratio
+            .call(dragDrop)
+            .on('click', selectNode);
 
         var textElements = svg.append("g")
             .attr("class", "texts")
