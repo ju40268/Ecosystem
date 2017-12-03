@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .nodeDetail {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .link {
+            stroke: #999;
+            stroke-opacity: .6;
+        }
+
+        node .text {
+            font: 12px sans-serif;
+            pointer-events: none;
+            color: white;
+        }
+
+    </style>
+</head>
+<body bgcolor="#000">
+
+<script src="http://d3js.org/d3.v3.js"></script>
+<!--<script src="d3/d3.v3.min.js charset=UTF-8"></script>-->
+<script>
+
+    var width = window.innerWidth
+    var height = window.innerHeight
+
+    var svg = d3.select('svg')
+    svg.attr('width', width).attr('height', height)
+
+    var force = d3.layout.force()
+        .charge(-120)
+        .linkDistance(200)
+        .size([width, height]);
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    d3.json("expertKnowledgeNodesType0AllEdges.json", function (error, data) {
+        var graph = data
+
+        var color = d3.scale.category10()
+            .domain(d3.range(10))
+        var drawGraph = function (graph) {
+            force
+                .nodes(graph.nodes)
+                .links(graph.links)
+                .start();
+
+            var link = svg.selectAll(".link")
+                .data(graph.links)
+                .enter().append("line")
+                .attr("class", "link")
+                .style("stroke", function(d){
+                    if(d.type == 0) {return 'lime'} //Breeds
+                    if(d.type == 1) {return 'orange'} //ComposedOf
+                    if(d.type == 2) {return 'red'} //ChangeSensitiveTo
+                    if(d.type == 3) {return 'cyan'} //TemporallyPrecedesOrSucceeds
+                    if(d.type == 4) {return 'blue'} //Determines
+                    if(d.type == 5) {return 'purple'} //NecessaryFor
+                    if(d.type == 6) {return '#E5E5E5'} //ProbabilisticallyDetermines
+                })
+                .style("stroke-width", function (d) {
+                    return 2 * d.weight;
+                });
+
+            var gnodes = svg.selectAll('g.gnode')//('g.gnode')
+                .data(graph.nodes)
+                .enter()
+                .append('g')
+                .classed('gnode', true);
+
+            function getNodeColor(node, neighbors) {
+                if (Array.isArray(neighbors) && neighbors.indexOf(node.name) > -1) {
+                    return 'pink';
+                }
+                if(node.risk > 0.66) return "url(#gradient)"; //danger
+                else if(node.risk > 0.33) return 'yellow';
+                else return "url(#gradient)";
+            }
+
+
+            function getNeighbors(node) {
+                console.log("Get neighbors node")
+                console.log(node.index)
+                return graph.links.reduce(function (neighbors, l) {
+                        console.log("l")
+                        console.log(l)
+                        if (l.target.index === node.index) {
+                            neighbors.push(l.source.name)
+                        } else if (l.source.index === node.index) {
+                            neighbors.push(l.target.name)
+                        }
+                        return neighbors
+                    },
+                    [node.name]
+                )
+            }
+
+
+            function isNeighborLink(node, link) {
+                if(link.target.name === node.name || link.source.name === node.name) {
+                    console.log("link detect");
+                    return 'red';
+                }
+                else return '#E5E5E5';
+            }
+
+            function getLinkColor(node, link) {
+                return isNeighborLink(node, link)
+            }
+
+            function selectNode(selectedNode) {
+                console.log("On click event")
+                console.log(selectedNode)
+                var neighbors = getNeighbors(selectedNode)
+                console.log("neighbors")
+                console.log(neighbors)
+//                node.style('fill', function (node) { return getNodeColor(node, neighbors) })
+                node.style("fill", function(d, i) {return "url(#grad" + i + ")";})
+                text.attr('fill', function (node) { return getTextColor(node, neighbors) })
+                link.attr('stroke', function (link) { return getLinkColor(selectedNode, link) })
+            }
+
+            function getTextColor(node, neighbors) {
+               return Array.isArray(neighbors) && neighbors.indexOf(node.name) > -1 ? 'red' : 'black'
+            }
+
+
+            // for default displaying
+            var text = svg.append("g")
+                .attr("class", "texts")
+                .selectAll("text")
+                .data(graph.nodes)
+                .enter().append("text")
+                .text(function (d) {
+                    if(d.value > 3000)
+                        return d.name
+                })
+//                .attr("font-color", "#fff")
+                .style("fill", "#fff")
+                .style("text-anchor", "middle")
+                .attr("dx", 15)
+                .attr("dy", 4)
+
+            var node = gnodes.append("circle")
+                .attr("class", "node")
+                .on('click', selectNode)
+                .attr("r", function(d) { return Math.log(d.value); })
+                .style("fill", function(d, i) {
+                    return "url(#grad" + i + ")";
+                })
+//                .attr("fill", getNodeColor)
+                .on("mouseover", function (d) {
+                    d3.select(this).transition()
+                        .duration(750)
+                        .attr("r", 50);
+                    if(d.value > 3000)
+                        d3.select(labels[0][d.index])
+                            .style("fill", "#fff")
+                            .style("text-anchor", "middle")
+                            .style("visibility", "hidden");
+                    else d3.select(labels[0][d.index])
+                        .style("fill", "#fff")
+                        .style("text-anchor", "middle")
+                        .style("visibility", "visible");
+                })
+                .on("mouseout", function () {
+                    d3.select(this).transition()
+                        .duration(750)
+                        .attr("r", function(d) { return Math.log(d.value); });
+                    return labels.style("visibility", "hidden");//})
+                })
+
+                .call(force.drag);
+
+
+            var grads = svg.append("defs").selectAll("radialGradient")
+                .data(graph.nodes)
+                .enter()
+                .append("radialGradient")
+                .attr("gradientUnits", "objectBoundingBox")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", "100%")
+                .attr("id", function(d, i) { return "grad" + i; });
+
+            grads.append("stop")
+                .attr("offset", "0%")
+                .style("stop-color", "white");
+
+            grads.append("stop")
+                .attr("offset", "100%")
+                .style("stop-color",  function(d) {
+                    if(d.risk > 0.66) return '#f00';
+                    else if(d.risk > 0.33) return '#ff0';
+                    else return '#0f0';
+                });
+
+
+            var labels = gnodes.append("text")
+                .text(function (d) {
+                    return d.name;
+                })
+                .style("visibility", "hidden");
+
+
+            force.on("tick", function () {
+                link.attr("x1", function (d) {
+                    return d.source.x;
+                })
+                    .attr("y1", function (d) {
+                        return d.source.y;
+                    })
+                    .attr("x2", function (d) {
+                        return d.target.x;
+                    })
+                    .attr("y2", function (d) {
+                        return d.target.y;
+                    });
+
+                gnodes.attr("transform", function (d) {
+                    return 'translate(' + [d.x, d.y] + ')';
+                });
+
+
+                text.attr('x', function (node) { return node.x })
+                    .attr('y', function (node) { return node.y });
+
+
+            });
+        };
+
+        drawGraph(graph);
+    })
+</script>
+</body>
+</html>
