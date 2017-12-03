@@ -40,10 +40,16 @@
             float: left;
         }
 
+        #Tabpage .tab-content {
+            color : white;
+            /*background-color: lightcyan;*/
+            padding : 5px 15px;
+        }
+
     </style>
 </head>
 
-<body bgcolor="black">
+<body bgcolor>
 <script src="http://d3js.org/d3.v3.js"></script>
 
 
@@ -61,7 +67,7 @@
 
     var force = d3.layout.force()
         .charge(-120)
-        .linkDistance(200)
+        .linkDistance(250)
         .size([width, height]);
 
     var svg = d3.select("body").append("svg")
@@ -168,43 +174,35 @@
                 })
 //                .attr("font-color", "#fff")
                 .attr("fill", "#fff")
-                .attr("text-anchor", "bottom")
                 .style("font-family", "monospace")
+                .attr("dx", 0)
+                .attr("dy", 0)
 //                .style("font-weight", "bold")
 //                .attr("text-anchor", "middle")
 
             var node = gnodes.append("circle")
                 .attr("class", "node")
                 .on('click', selectNode)
-                .attr("r", function(d) { return Math.log(d.value); })
+                .attr("r", function(d) { return 2*Math.log(d.value); })
                 .style("fill", function(d, i) {
                     return "url(#grad" + i + ")";
                 })
                 .on("mouseover", function (d) {
                     d3.select(this).transition()
-                        .duration(750)
+                        .duration(800)
                         .attr("r", 50);
-                    console.log(d)
-                    if(d.value > 3000) {
-                        console.log(d)
-                        d3.select(labels[0][d.index])
-//                            .style("fill", "#fff")
-//                            .style("text-anchor", "middle")
-                            .style("visibility", "hidden");
-                    }
-                    else {
-                        console.log(d)
+                    if(d.value > 3000)
+                        d3.select(labels[0][d.index]).style("visibility", "hidden");
+                    else
                         d3.select(labels[0][d.index])
                             .style("fill", "#fff")
-                            .style("text-anchor", "middle")
                             .style("font-family", "monospace")
                             .style("visibility", "visible");
-                    }
                 })
                 .on("mouseout", function () {
                     d3.select(this).transition()
-                        .duration(750)
-                        .attr("r", function(d) { return Math.log(d.value); });
+                        .duration(1000)
+                        .attr("r", function(d) { return 2*Math.log(d.value); });
                     return labels.style("visibility", "hidden");//})
                 })
 
@@ -228,9 +226,9 @@
             grads.append("stop")
                 .attr("offset", "100%")
                 .style("stop-color",  function(d) {
-                    if(d.risk > 0.66) return '#f00';
-                    else if(d.risk > 0.33) return '#ff0';
-                    else return '#0f0';
+                    if(d.risk > 0.66) return '#ac2925';
+                    else if(d.risk > 0.33) return '#f7ecb5';
+                    else return '#398439';
                 });
 
 
@@ -271,11 +269,11 @@
     })
 </script>
 </div>
+
     <div class="right">
-        <h2>Dropdowns</h2>
-        <p>The .divider class is used to separate links inside the dropdown menu with a thin horizontal line:</p>
+        <h2>Color / Size Option</h2>
         <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Color Option
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">HTML</a></li>
@@ -285,6 +283,53 @@
                 <li><a href="#">About Us</a></li>
             </ul>
         </div>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Size Option
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li class="divider"></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+
+
+        <h2>Edge Colors</h2>
+        <!--menu bar-->
+        <div class="container" id="Tabpage">
+            <ul  class="nav nav-pills">
+                <li class="active"><a  href="#edgecolor" data-toggle="tab">Edge Color</a></li>
+                <li><a href="#nodecolor" data-toggle="tab">Node Color</a>
+                </li>
+                <li><a href="#nodesize" data-toggle="tab">Node Size</a>
+                </li>
+            </ul>
+
+
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="edgecolor">
+                
+
+
+
+                <h3>Content's background color is the same for the tab</h3>
+            </div>
+            <div class="tab-pane" id="nodecolor">
+                <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+            </div>
+            <div class="tab-pane" id="nodesizeß">
+                <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+            </div>
+
+        </div>
+
+        </div>
+        </div>
     </div>
+</div>
+
 </body>
 </html>
