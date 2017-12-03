@@ -2,6 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+
+
     <style>
 
         .node {
@@ -20,21 +28,33 @@
         }
 
         node .text {
-            font: 12px sans-serif;
-            pointer-events: none;
-            color: white;
+            /*font-size: 14px;*/
+            /*color: white;*/
+        }
+        .right {
+            width: 25%;
+            float: right;
+        }
+        .main {
+            width: 75%;
+            float: left;
         }
 
     </style>
 </head>
-<body bgcolor="#000">
 
+<body bgcolor="black">
 <script src="http://d3js.org/d3.v3.js"></script>
+
+
 <!--<script src="d3/d3.v3.min.js charset=UTF-8"></script>-->
+<div class="main">
 <script>
 
-    var width = window.innerWidth
-    var height = window.innerHeight
+//    var width = window.innerWidth
+//    var height = window.innerHeight
+    var width = 1000
+    var height = 800
 
     var svg = d3.select('svg')
     svg.attr('width', width).attr('height', height)
@@ -50,9 +70,6 @@
 
     d3.json("expertKnowledgeNodesType0AllEdges.json", function (error, data) {
         var graph = data
-
-        var color = d3.scale.category10()
-            .domain(d3.range(10))
         var drawGraph = function (graph) {
             force
                 .nodes(graph.nodes)
@@ -150,10 +167,11 @@
                         return d.name
                 })
 //                .attr("font-color", "#fff")
-                .style("fill", "#fff")
-                .style("text-anchor", "middle")
-                .attr("dx", 15)
-                .attr("dy", 4)
+                .attr("fill", "#fff")
+                .attr("text-anchor", "bottom")
+                .style("font-family", "monospace")
+//                .style("font-weight", "bold")
+//                .attr("text-anchor", "middle")
 
             var node = gnodes.append("circle")
                 .attr("class", "node")
@@ -162,20 +180,26 @@
                 .style("fill", function(d, i) {
                     return "url(#grad" + i + ")";
                 })
-//                .attr("fill", getNodeColor)
                 .on("mouseover", function (d) {
                     d3.select(this).transition()
                         .duration(750)
                         .attr("r", 50);
-                    if(d.value > 3000)
+                    console.log(d)
+                    if(d.value > 3000) {
+                        console.log(d)
+                        d3.select(labels[0][d.index])
+//                            .style("fill", "#fff")
+//                            .style("text-anchor", "middle")
+                            .style("visibility", "hidden");
+                    }
+                    else {
+                        console.log(d)
                         d3.select(labels[0][d.index])
                             .style("fill", "#fff")
                             .style("text-anchor", "middle")
-                            .style("visibility", "hidden");
-                    else d3.select(labels[0][d.index])
-                        .style("fill", "#fff")
-                        .style("text-anchor", "middle")
-                        .style("visibility", "visible");
+                            .style("font-family", "monospace")
+                            .style("visibility", "visible");
+                    }
                 })
                 .on("mouseout", function () {
                     d3.select(this).transition()
@@ -246,5 +270,21 @@
         drawGraph(graph);
     })
 </script>
+</div>
+    <div class="right">
+        <h2>Dropdowns</h2>
+        <p>The .divider class is used to separate links inside the dropdown menu with a thin horizontal line:</p>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li class="divider"></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
