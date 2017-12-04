@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>jgraph</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/build/jgraph.min.js"></script>
+</head>
+<body>
+<div class="graph"></div>
+<div class="label"></div>
+<div class="description">
+    <h1>Ecosystem</h1>
+    <!--<p>-->
+        <!--This graph was generated through the Github API by traversing-->
+        <!--the "following" lists of each user. Nodes are users, and are-->
+        <!--sized by their number of followers. I used myself-->
+        <!--(<a href="https://github.com/patrickfuller">patrickfuller</a>)-->
+        <!--as the root node of this graph, and cut off traversal at 2,500-->
+        <!--users using <a href="https://gist.github.com/patrickfuller/8143294">-->
+        <!--this script</a>.-->
+    <!--</p>-->
+</div>
+
+<a href="https://github.com/patrickfuller/jgraph"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<script type="text/javascript">
+    var graph_data;
+    // Create and draw, making sure to disable layout optimization
+    jgraph.create('.graph');
+    $.getJSON('output.json', function (graph) {
+        // Scale followers with sphere volume
+        graph_data = JSON.parse(graph)
+        $.each(graph_data.nodes, function (name, properties) {
+            properties.size = 0.1 * Math.pow(properties.value, 1.0 / 3.0);
+            if(properties.risk > 0.66) properties.color = "0xff0080";
+            else if(properties.risk > 0.33) properties.color = "0xffff00";
+            else properties.color = "0x00ff80";
+        });
+        $.each(graph_data.edges, function (name, properties) {
+            if(properties.type === 0) properties.color = "0xfdd6b5";
+            else if(properties.type === 1) properties.color = "0xfdf3b8";
+            else if(properties.type === 2) properties.color = "0xa7e4ae";
+            else if(properties.type === 3) properties.color = "0xbfffe6";
+            else if(properties.type === 4) properties.color = "0xc1d1fd";
+            else if(properties.type === 5) properties.color = "0xe300ff";
+            else if(properties.type === 7) properties.color = "0xa1aaaf";
+            else properties.color = "0xeeeeee";
+        });
+        jgraph.draw(graph_data);
+    });
+
+    // Show name of node on hover
+    var onEnter, onExit, $d, hovered;
+    $d = $('.label');
+    $d.hide();
+    hovered = jgraph.makeMaterial(0xb7ecff);
+    onEnter = function (node) {
+        $d.html('<p><b>' + node.name + '</b></p>');
+        $d.show();
+        node.defaultMaterial = node.material;
+        node.material = hovered;
+    };
+    onExit = function (node) {
+        $d.empty();
+        $d.hide();
+        node.material = node.defaultMaterial;
+    };
+    jgraph.onNodeHover(onEnter, onExit);
+
+    // Move the text showing name along with the mouse
+    $(document).mousemove(function (event) {
+        $d.css({ left: event.pageX + 10, top: event.pageY + 10 });
+    });
+
+    // Pop up a github window if a node is clicked
+    jgraph.onNodeClick(function (node) {
+        window.open("https://github.com/" + node.name, "_blank");
+    });
+</script>
+</body>
+</html>
