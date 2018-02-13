@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 
+<!--suppress ALL -->
 <head>
     <title>Welcome to Vue</title>
     <meta charset="utf-8">
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script src="https://unpkg.com/vue"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
@@ -52,17 +54,37 @@
 
 <body>
 <div id="app">
-    <div class="controls">
-        <div>
-            <label>Adjust width</label>
-            <input type="range" v-model="settings.width" min="0" max="100" />
-        </div>
-    </div>
+    <!--<div class="controls">-->
+        <!--<div>-->
+            <!--<label>Adjust width</label>-->
+            <!--<input type="range" v-model="settings.width" min="0" max="50" />-->
+        <!--</div>-->
+        <!--<div class="dropdown">-->
+            <!--<button class="dropdown-toggle" :click="isShowDrop = !isShowDrop">-->
+                <!--Dropdown-->
+            <!--</button>-->
+            <!--<div class="dropdown-menu" v-show="isShowDrop">-->
+                <!--<li><a>Item 1</a></li>-->
+                <!--<li><a>Item 2</a></li>-->
+                <!--<li><a>Item 3</a></li>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<select v-for="color in colors"-->
+            <!--v-model="color.selectedOption">-->
+        <!--<option v-for="option in color.options" :value="option">-->
+            <!--{{option}}-->
+        <!--</option>-->
+    <!--</select>-->
     <div class="svg-container" :style="{width: settings.width + '%'}">
+
         <svg id="svg" pointer-events="all" viewBox="0 0 960 600" preserveAspectRatio="xMinYMin meet">
             <g :id="links"></g>
             <g :id="nodes"></g>
         </svg>
+
+
     </div>
 
 
@@ -98,6 +120,30 @@
             });
         },
         computed: {
+
+            labels: function () {
+                var that = this;
+                if (that.graph){
+//                    return d3.select("nodes").append("g")
+//                            .data(that.graph.nodes)
+//                            .append("text")
+//                            .text(function (d) {
+//                                return d.name;
+//                            })
+//                            .style("visibility", "visible");
+                    return d3.select("nodes").append("g")
+                        .attr("class", "texts")
+                        .selectAll("text")
+                        .data(that.graph.nodes)
+                        .enter().append("text")
+                        .text(function (d) {
+                            if(d.value > 3000)
+                                return d.name
+                        })
+                }
+
+            },
+
             nodes: function () {
                 var that = this;
                 if (that.graph) {
@@ -107,20 +153,20 @@
                         .data(that.graph.nodes)
                         .enter().append("circle")
                         .attr("r", function(d) { return 2*Math.log(d.value); })
-                        .style("fill", function(d, i) {
-                            return "url(#grad" + i + ")";
-                        })
+//                        .style("fill", function(d, i) {
+//                            return "url(#grad" + i + ")";
+//                        })
                         .on("mouseover", function (d) {
                             d3.select(this).transition()
                                 .duration(800)
                                 .attr("r", 50);
-                            if(d.value > 3000)
-                                d3.select(labels[0][d.index]).style("visibility", "hidden");
-                            else
-                                d3.select(labels[0][d.index])
-                                    .style("fill", "#fff")
-                                    .style("font-family", "monospace")
-                                    .style("visibility", "visible");
+                            d3.select(this).append("text")
+                                .append("svg:title")
+                                .text(function(d) {
+                                    console.log(d.name)
+                                    return d.name;
+                                })
+                            return tooltip.style("visibility", "visible").text('radius = ' + d.name);
                         })
                         .on("mouseout", function () {
                             d3.select(this).transition()
@@ -128,9 +174,13 @@
                                 .attr("r", function(d) { return 2*Math.log(d.value); });
                             return labels.style("visibility", "hidden");//})
                         })
-//                        .attr("fill", function (d ,i) {
+                        .attr("fill", function (d ,i) {
+//                            console.log("fill function", d.name)
 //                            return that.color(i);
-//                        })
+                            if(d.risk > 0.66) return '#ac2925';
+                            else if(d.risk > 0.33) return '#f7ecb5';
+                            else return '#398439';
+                        })
                         .call(d3.drag()
                             .on("start", function dragstarted(d) {
                                 if (!d3.event.active) that.simulation.alphaTarget(0.3).restart();
@@ -156,9 +206,41 @@
                         .selectAll("line")
                         .data(that.graph.links)
                         .enter().append("line")
-                        .attr("stroke-width", function (d) { return Math.sqrt(d.value); });
+//                        .attr("stroke-width", function (d) { return Math.sqrt(d.value); });
+                        .style("stroke", function(d){
+                            if(d.type == 0) {return 'lime'} //Breeds
+                            if(d.type == 1) {return 'orange'} //ComposedOf
+                            if(d.type == 2) {return 'red'} //ChangeSensitiveTo
+                            if(d.type == 3) {return 'cyan'} //TemporallyPrecedesOrSucceeds
+                            if(d.type == 4) {return 'blue'} //Determines
+                            if(d.type == 5) {return 'purple'} //NecessaryFor
+                            if(d.type == 6) {return '#E5E5E5'} //ProbabilisticallyDetermines
+                        })
+                        .style("stroke-width", function (d) {
+                            return 2 * d.weight;
+                        });
                 }
             },
+            text: function () {
+                var that = this;
+                if (that.graph){
+                    return d3.select("svg").append("g")
+                        .attr("class", "texts")
+                        .selectAll("text")
+                        .data(that.graph.nodes)
+                        .enter().append("text")
+                        .text(function (d) {
+                            if(d.value > 3000)
+                                return d.name
+                        })
+                        .attr("fill", "#fff")
+                        .style("font-family", "monospace")
+                        .attr("dx", 0)
+                        .attr("dy", 0)
+                }
+
+            }
+
 
         },
         updated: function () {
@@ -173,6 +255,13 @@
                 that.nodes
                     .attr("cx", function (d) { return d.x; })
                     .attr("cy", function (d) { return d.y; });
+                that.text
+                    .attr('x', function (node) { return node.x })
+                    .attr('y', function (node) { return node.y });
+
+                that.labels
+                    .attr('x', function (node) { return node.x })
+                    .attr('y', function (node) { return node.y });
             });
         }
     });

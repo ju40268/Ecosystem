@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c3c369b-3666-4676-a5de-8d1700a55a86" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/animate-force-data.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/input.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/vue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/connected.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vue-D3/index.html" afterPath="$PROJECT_DIR$/Vue-D3/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vue-D3/style.css" afterPath="$PROJECT_DIR$/Vue-D3/style.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,18 +22,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Vue-D3/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="895">
-              <caret line="119" column="57" lean-forward="false" selection-start-line="119" selection-start-column="57" selection-end-line="119" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="231" selection-end-column="19" />
+            <state relative-caret-position="199">
+              <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="78" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -43,7 +32,7 @@
       <file leaf-file-name="input.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
+            <state relative-caret-position="12546">
               <caret line="697" column="1" lean-forward="false" selection-start-line="697" selection-start-column="1" selection-end-line="697" selection-end-column="1" />
               <folding />
             </state>
@@ -66,11 +55,31 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vue-D3/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+            <state relative-caret-position="1242">
+              <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
               <folding>
-                <marker date="1518165332000" expanded="true" signature="0:446" ph="..." />
+                <marker date="1518499068000" expanded="true" signature="0:449" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4338">
+              <caret line="241" column="31" lean-forward="false" selection-start-line="241" selection-start-column="31" selection-end-line="241" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connected.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vue-D3/connected.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3762">
+              <caret line="209" column="5" lean-forward="false" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,11 +89,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>label</find>
+      <find>g.node</find>
+      <find>nodes</find>
+      <find>gnodes</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -96,8 +113,9 @@
         <option value="$PROJECT_DIR$/Vue-D3/vue.ts" />
         <option value="$PROJECT_DIR$/Vue-D3/vue.js" />
         <option value="$PROJECT_DIR$/Vue-D3/animate-force-data.json" />
-        <option value="$PROJECT_DIR$/Vue-D3/style.css" />
         <option value="$PROJECT_DIR$/Vue-D3/input.json" />
+        <option value="$PROJECT_DIR$/Vue-D3/connected.html" />
+        <option value="$PROJECT_DIR$/Vue-D3/style.css" />
         <option value="$PROJECT_DIR$/Vue-D3/index.html" />
       </list>
     </option>
@@ -129,7 +147,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,6 +163,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,12 +199,13 @@
       <workItem from="1518161036594" duration="3291000" />
       <workItem from="1518302399654" duration="46000" />
       <workItem from="1518308101740" duration="577000" />
-      <workItem from="1518488890111" duration="1168000" />
+      <workItem from="1518488890111" duration="7384000" />
+      <workItem from="1518499525199" duration="561000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5291000" />
+    <option name="totallyTimeSpent" value="12068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="814" extended-state="0" />
@@ -195,12 +214,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -230,6 +249,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12546">
+          <caret line="697" column="1" lean-forward="false" selection-start-line="697" selection-start-column="1" selection-end-line="697" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/vue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="33" />
+          <folding>
+            <marker date="1518164035000" expanded="true" signature="434:589" ph="..." />
+            <marker date="1518164035000" expanded="true" signature="535:580" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+          <folding>
+            <marker date="1518499068000" expanded="true" signature="0:449" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4338">
+          <caret line="241" column="31" lean-forward="false" selection-start-line="241" selection-start-column="31" selection-end-line="241" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/connected.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3762">
+          <caret line="209" column="5" lean-forward="false" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Vue-D3/animate-force-data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -254,7 +326,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
           <folding>
-            <marker date="1518165332000" expanded="true" signature="0:446" ph="..." />
+            <marker date="1518499068000" expanded="true" signature="0:449" ph="..." />
           </folding>
         </state>
       </provider>
@@ -291,7 +363,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
           <folding>
-            <marker date="1518165332000" expanded="true" signature="0:446" ph="..." />
+            <marker date="1518499068000" expanded="true" signature="0:449" ph="..." />
           </folding>
         </state>
       </provider>
@@ -328,34 +400,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
           <folding>
-            <marker date="1518165332000" expanded="true" signature="0:446" ph="..." />
+            <marker date="1518499068000" expanded="true" signature="0:449" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue-D3/force_directed_graph.js" />
     <entry file="file://$PROJECT_DIR$/Vue-D3/vue.ts" />
-    <entry file="file://$PROJECT_DIR$/Vue-D3/vue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="33" />
-          <folding>
-            <marker date="1518164035000" expanded="true" signature="434:589" ph="..." />
-            <marker date="1518164035000" expanded="true" signature="535:580" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vue-D3/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
-          <folding>
-            <marker date="1518165332000" expanded="true" signature="0:446" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/force-directed.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2592">
@@ -372,26 +423,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
+    <entry file="file://$PROJECT_DIR$/Vue-D3/connected.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="697" column="1" lean-forward="false" selection-start-line="697" selection-start-column="1" selection-end-line="697" selection-end-column="1" />
+        <state relative-caret-position="3762">
+          <caret line="209" column="5" lean-forward="false" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/github.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/vue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="33" />
+          <folding>
+            <marker date="1518164035000" expanded="true" signature="434:589" ph="..." />
+            <marker date="1518164035000" expanded="true" signature="535:580" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="231" selection-end-column="19" />
+        <state relative-caret-position="4338">
+          <caret line="241" column="31" lean-forward="false" selection-start-line="241" selection-start-column="31" selection-end-line="241" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+          <folding>
+            <marker date="1518499068000" expanded="true" signature="0:449" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12546">
+          <caret line="697" column="1" lean-forward="false" selection-start-line="697" selection-start-column="1" selection-end-line="697" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue-D3/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="895">
-          <caret line="119" column="57" lean-forward="false" selection-start-line="119" selection-start-column="57" selection-end-line="119" selection-end-column="57" />
+        <state relative-caret-position="199">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="78" selection-end-column="17" />
           <folding />
         </state>
       </provider>
