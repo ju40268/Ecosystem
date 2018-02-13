@@ -55,10 +55,10 @@
 <body>
 <div id="app">
     <!--<div class="controls">-->
-        <!--<div>-->
-            <!--<label>Adjust width</label>-->
-            <!--<input type="range" v-model="settings.width" min="0" max="50" />-->
-        <!--</div>-->
+        <div>
+            <label>Adjust width</label>
+            <input type="range" v-model="settings.width" min="0" max="100" />
+        </div>
         <!--<div class="dropdown">-->
             <!--<button class="dropdown-toggle" :click="isShowDrop = !isShowDrop">-->
                 <!--Dropdown-->
@@ -77,29 +77,41 @@
             <!--{{option}}-->
         <!--</option>-->
     <!--</select>-->
-    <div class="svg-container" :style="{width: settings.width + '%'}">
-
-        <svg id="svg" pointer-events="all" viewBox="0 0 960 600" preserveAspectRatio="xMinYMin meet">
-            <g :id="links"></g>
-            <g :id="nodes"></g>
-        </svg>
-
-
+    <div class="main">
+        <div class="svg-container" :style="{width: settings.width + '%'}">
+            <svg id="svg" pointer-events="all" viewBox="0 0 960 600" preserveAspectRatio="xMinYMin meet">
+                <g :id="links"></g>
+                <g :id="nodes"></g>
+            </svg>
+        </div>
     </div>
 
+    <div class="right">
+        <select v-model="choose_by">
+            <option>Risk</option>
+            <option>Name</option>
+            <option>Value</option>
+        </select>
+        <div>
+            {{choose_by}}
+        </div>
+    </div>
 
 </div>
+
 <script type="text/javascript">
     new Vue({
         el: "#app",
         data: function () {
             return {
+                choose_by: null,
                 graph: null,
                 simulation: null,
-                color: d3.scaleOrdinal(d3.schemeCategory20),
+//                color: d3.scaleOrdinal(d3.schemeCategory20),
+                color: null,
                 settings: {
                     strokeColor: "#29B5FF",
-                    width: 100,
+                    width: 95,
                     svgWigth: 960,
                     svgHeight: 600
                 }
