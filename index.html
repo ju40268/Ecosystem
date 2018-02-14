@@ -74,7 +74,7 @@
         .attr("width", width)
         .attr("height", height);
 
-    d3.json("expertKnowledgeNodesType0AllEdges.json", function (error, data) {
+    d3.json("input.json", function (error, data) {
         var graph = data
         var drawGraph = function (graph) {
             force
@@ -271,20 +271,20 @@
 </div>
 
     <div class="right">
-        <h2>Color / Size Option</h2>
+        <h2>Choose By</h2>
         <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Color Option
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-                <li class="divider"></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="#">Risk</a></li>
+                <li><a href="#">Name</a></li>
+                <li><a href="#">Value</a></li>
+                <!--<li class="divider"></li>-->
+                <!--<li><a href="#">About Us</a></li>-->
             </ul>
         </div>
         <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Size Option
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Size  Option
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">HTML</a></li>
@@ -311,10 +311,7 @@
 
         <div class="tab-content clearfix">
             <div class="tab-pane active" id="edgecolor">
-                
-
-
-
+                <!--TODO: put in the index page html here-->
                 <h3>Content's background color is the same for the tab</h3>
             </div>
             <div class="tab-pane" id="nodecolor">

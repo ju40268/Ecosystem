@@ -50,8 +50,8 @@
           {id: 9}
         ],
         links: [
-          {sid: 1, tid: 2, _color: '#0022ff'},
-          {sid: 2, tid: 8, _color: '#0022ff'},
+          {sid: 1, tid: 2},
+          {sid: 2, tid: 8},
           {sid: 3, tid: 4},
           {sid: 4, tid: 5},
           {sid: 5, tid: 6},
@@ -96,4 +96,5 @@ li {
 a {
   color: #42b983;
 }
+  
 </style>
