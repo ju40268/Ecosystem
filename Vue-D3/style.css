@@ -1,30 +1,30 @@
-/*@import url('https://fonts.googleapis.com/css?family=PT+Sans');*/
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
-/*body{*/
-    /*font-family: 'PT Sans';*/
-    /*background-color: 	#778899;*/
-/*}*/
-/*.title{*/
-    /*position:absolute;*/
-    /*text-align: center;*/
-    /*left: 2em;*/
-/*}*/
-/*h1,a{*/
-    /*color: #1aad8d;*/
-    /*text-decoration: none;*/
-/*}*/
+body{
+    font-family: 'PT Sans';
+    background-color: 	#778899;
+}
+.title{
+    position:absolute;
+    text-align: center;
+    left: 2em;
+}
+h1,a{
+    color: #1aad8d;
+    text-decoration: none;
+}
 
-/*ul.menu {*/
-    /*list-style: none;*/
-    /*position: absolute;*/
-    /*z-index: 100;*/
-    /*min-width: 20em;*/
-    /*text-align: left;*/
-/*}*/
-/*ul.menu li{*/
-    /*margin-top: 1em;*/
-    /*position: relative;*/
-/*}*/
+ul.menu {
+    list-style: none;
+    position: absolute;
+    z-index: 100;
+    min-width: 20em;
+    text-align: left;
+}
+ul.menu li{
+    margin-top: 1em;
+    position: relative;
+}
 
 .right {
     width: 25%;

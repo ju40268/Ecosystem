@@ -87,14 +87,18 @@
     </div>
 
     <div class="right">
-        <select v-model="choose_by">
+        <select v-model="choose_by_node_attr">
             <option>Risk</option>
             <option>Name</option>
             <option>Value</option>
         </select>
-        <div>
-            {{choose_by}}
-        </div>
+        <h1>{{choose_by_node_attr}}</h1>
+        <select v-model="choose_by_threshold">
+            <option>0.33</option>
+            <option>0.67</option>
+            <option>0.99</option>
+        </select>
+        <h1>{{choose_by_threshold}}</h1>
     </div>
 
 </div>
@@ -104,10 +108,10 @@
         el: "#app",
         data: function () {
             return {
-                choose_by: null,
+                choose_by_node_attr: 'Name',
+                choose_by_threshold: 0.33,
                 graph: null,
                 simulation: null,
-//                color: d3.scaleOrdinal(d3.schemeCategory20),
                 color: null,
                 settings: {
                     strokeColor: "#29B5FF",
@@ -152,15 +156,15 @@
             },
 
             nodes: function () {
-//                console.log(this.choose_by);
                 var that = this;
+                var choose_by_threshold = this.choose_by_threshold;
                 if (that.graph) {
                     return d3.select("svg").append("g")
                         .attr("class", "nodes")
                         .selectAll("circle")
                         .data(that.graph.nodes)
                         .enter().append("circle")
-                        .attr("r", function(d) { return 2*Math.log(d.value); })
+                        .attr("r", function(d) { return 2 * Math.log(d.value); })
 //                        .style("fill", function(d, i) {
 //                            return "url(#grad" + i + ")";
 //                        })
@@ -186,8 +190,10 @@
                         .attr("fill", function (d ,i) {
 //                            console.log("fill function", d.name)
 //                            return that.color(i);
-                            if(d.risk > 0.66) return '#ac2925';
-                            else if(d.risk > 0.33) return '#f7ecb5';
+//                            console.log(d.risk)
+                            console.log("choose_by", choose_by_threshold)
+                            if(d.risk >= choose_by_threshold + 0.3) return '#ac2925';
+                            else if(d.risk >= choose_by_threshold + 0.2) return '#f7ecb5';
                             else return '#398439';
                         })
                         .call(d3.drag()
