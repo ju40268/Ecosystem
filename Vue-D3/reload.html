@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome to Vue</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .links line {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
+
+        .nodes circle {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+        .right {
+            width: 25%;
+            float: right;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="app">
+    <d3-force-graph></d3-force-graph>
+</div>
+
+
+<script type="text/javascript">
+    // https://unpkg.com/vue-d3@0.1.0 --> only adds d3 to Vue.prototype but it wasn't working as expected (d3 is lower case)
+    Vue.prototype.$d3 = d3;
+    const URL = 'https://demo5147591.mockable.io/miserables'; // data copied from below link because of jsonp support
+
+    //'https://bl.ocks.org/mbostock/raw/4062045/5916d145c8c048a6e3086915a6be464467391c62/miserables.json';
+    //console.log(window.d3);
+    const d3ForceGraph = {
+        template: `
+          <div>
+
+
+
+            <div class="right" id="Tabpage">
+            <h3>Choose By Node Attribute</h3>
+                <select v-model="choose_by_node_attr">
+                    <option>risk</option>
+                    <option>name</option>
+                    <option>value</option>
+                </select>
+              <h3>Choose By Threshold</h3>
+                <select v-model="choose_by_threshold">
+                    <option>0.33</option>
+                    <option>0.67</option>
+                    <option>0.99</option>
+                </select>
+                <br>
+                <br>
+                <button class="btn-primary" @click="reload({'thresh': choose_by_threshold, 'node': choose_by_node_attr})">Submit Parameters</button>
+                <!--<button @click="reload({'thresh': choose_by_threshold, 'node': choose_by_node_attr})">Change Node Size</button>-->
+                <br>
+                <br>
+
+                <ul  class="nav nav-pills">
+                    <li class="active"><a  href="#edge_color" data-toggle="tab">Edge Color</a></li>
+                    <li><a href="#node_color" data-toggle="tab">Node Color</a>
+                    </li>
+                    <li><a href="#node_size" data-toggle="tab">Node Size</a>
+                    </li>
+                </ul>
+
+
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="edge_color">
+                    <h3>Content's background color is the same for the tab</h3>
+                </div>
+                <div class="tab-pane" id="node_color">
+                    <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+                </div>
+                <div class="tab-pane" id="node_size">
+                    <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+                </div>
+            </div>
+
+            </div>
+
+
+            <svg width="960" height="600" @mousemove="onMouseMove($event)"></svg>
+        </div>
+      `,
+        data() {
+            return {
+                nodes: [],
+                links: [],
+                choose_by_threshold: 0.33,
+                choose_by_node_attr: 'risk',
+                simulation: undefined,
+                mousePosition: {
+                    x: 0,
+                    y: 0
+                }
+            }
+        },
+        mounted() {
+            this.loadData(); // initially load json
+        },
+        methods: {
+            // load data
+            loadData(param) {
+                console.log(" ####### in load data ####### ");
+                console.log(param);
+                this.$svg = $(this.$el).find('svg');
+                let svg = this.$d3.select(this.$svg.get(0)), //this.$d3.select("svg"),
+                    width = +svg.attr("width"),
+                    height = +svg.attr("height");
+                this.simulation = this.$d3.forceSimulation()
+                    .force("link", this.$d3.forceLink().distance(100).strength(0.1))
+                    .force("charge", this.$d3.forceManyBody())
+                    .force("center", this.$d3.forceCenter(width / 2, height / 2));
+                let color = this.$d3.scaleOrdinal(this.$d3.schemeCategory20);
+
+                // the default params
+                if (param == undefined) param = {'thresh': 0.33, 'node': 'risk'};
+
+
+                $.getJSON('input.json', (graph) => {
+//                    d3.json("input.json", function(error, graph) { // already loaded
+                    //if (error) throw error; // needs to be implemented differently
+                    let nodes = graph.nodes;
+                    let links = graph.links;
+
+                    let link = svg.append("g")
+                        .attr("class", "links")
+                        .selectAll("line")
+                        .data(links) //graph.links)
+                        .enter().append("line")
+                        .attr("stroke-width", function(d) {
+                            return Math.sqrt(d.value);
+                        });
+
+                    let node = svg.append("g")
+                        .attr("class", "nodes")
+                        .selectAll("circle")
+                        .data(nodes) //graph.nodes)
+                        .enter().append("circle")
+                        .attr("r", function (d) {
+                            if (param.node == 'risk') return 15 * d.risk;
+                            if (param.node == 'value') return 0.3 * Math.sqrt(d.value);
+                        })
+                        .attr("fill", function(d) {
+//                            if(d.risk > param.thresh + 0.4) return '#ac2925';
+//                            else if(param.thresh - 0.2 < d.risk && d.risk < param.thresh + 0.2) return '#f7ecb5';
+//                            else return '#398439';
+
+                            if(d.risk > param.thresh + 0.4) {
+                                return '#ac2925';
+                            }
+                            if(d.risk > param.thresh + 0.2 && d.risk < param.thresh + 0.4) {
+                                console.log('Yellow')
+                                return '#f7ecb5';
+                            }
+                            else return '#398439';
+                        })
+                        .call(this.$d3.drag()
+                            .on("start", this.dragstarted)
+                            .on("drag", this.dragged)
+                            .on("end", this.dragended));
+
+                    let text = svg.append("g")
+                        .attr("class", "texts")
+                        .selectAll("text")
+                        .data(nodes)
+                        .enter().append("text")
+                        .text(function (d) {
+                            if(d.value > 1500)
+                                return d.name
+                        })
+                        .attr("fill", "#fff")
+                        .style("font-family", "monospace")
+                        .attr("dx", 0)
+                        .attr("dy", 0)
+
+                    this.simulation
+                        .nodes(graph.nodes)
+                        .on("tick", ticked);
+
+                    this.simulation.force("link")
+                        .links(links); //graph.links);
+
+                    function ticked() {
+                        link
+                            .attr("x1", function(d) {
+                                return d.source.x;
+                            })
+                            .attr("y1", function(d) {
+                                return d.source.y;
+                            })
+                            .attr("x2", function(d) {
+                                return d.target.x;
+                            })
+                            .attr("y2", function(d) {
+                                return d.target.y;
+                            });
+
+                        node
+                            .attr("cx", function(d) {
+                                return d.x;
+                            })
+                            .attr("cy", function(d) {
+                                return d.y;
+                            });
+                        text
+                            .attr('x', function (d) {
+                                return d.x
+                            })
+                            .attr('y', function (d) {
+                                return d.y
+                            });
+
+                    }
+                })
+            },
+            reload(param) {
+                console.log('reloading...');
+                console.log('##### the param in reload #####');
+                console.log(param);
+                this.$svg.empty(); // clear svg --> easiest way to re-create the force graph.
+                this.loadData(param);
+            },
+            // mouse events
+            onMouseMove(evt) {
+                //console.log(evt, this)
+                this.mousePosition = {
+                    x: evt.clientX,
+                    y: evt.clientY
+                }
+            },
+            // drag event handlers
+            dragstarted(d) {
+                if (!this.$d3.event.active) this.simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            },
+            dragged(d) {
+                d.fx = this.$d3.event.x;
+                d.fy = this.$d3.event.y;
+            },
+            dragended(d) {
+                if (!this.$d3.event.active) this.simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+    };
+
+    new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        components: {
+            d3ForceGraph
+        }
+    });
+</script>
+
+</body>
+</html>
