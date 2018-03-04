@@ -186,9 +186,6 @@
     const d3ForceGraph = {
         template: `
           <div>
-
-
-
             <div class="right" id="Tabpage">
             <h3>Choose By Node Attribute</h3>
                 <select v-model="choose_by_node_attr">
@@ -254,7 +251,7 @@
             </div>
 
 
-            <svg width="1000" height="600" @mousemove="onMouseMove($event)"></svg>
+            <svg width="1000" height="700" @mousemove="onMouseMove($event)"></svg>
         </div>
       `,
         data() {
@@ -283,8 +280,10 @@
                     width = +svg.attr("width"),
                     height = +svg.attr("height");
                 this.simulation = this.$d3.forceSimulation()
-                    .force("link", this.$d3.forceLink().distance(100).strength(0.1))
-                    .force("charge", this.$d3.forceManyBody())
+                    .force("link", this.$d3.forceLink().distance(200).strength(1))
+                    .force("charge", this.$d3.forceManyBody(function(d){
+                        return -Math.pow(d.risk, 3);
+                    }))
                     .force("center", this.$d3.forceCenter(width / 2, height / 2));
                 let color = this.$d3.scaleOrdinal(this.$d3.schemeCategory20);
 
