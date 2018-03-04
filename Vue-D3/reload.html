@@ -307,15 +307,6 @@
                     let nodes = graph.nodes;
                     let links = graph.links;
 
-
-                    // for the linked nodes
-                    let linkedByIndex = {};
-                    links.forEach(function(d) {
-                        linkedByIndex[d.source.index + "," + d.target.index] = 1;
-                    });
-                    console.log(" ###### Linked node ###### ")
-                    console.log(linkedByIndex)
-
                     let grads = svg.append("defs").selectAll("radialGradient")
                         .data(nodes)
                         .enter()
@@ -392,14 +383,7 @@
                                 .attr("r", function(d) { return 2*Math.log(d.value); });
                             return labels.style("visibility", "hidden");//})
                         })
-                        .on("click", function (d) {
-                            console.log(" ##### onclick ####### ");
-                            let neighbor = getNeighbors(d);
-                            console.log(" ##### onclick neighbor #######")
-                            console.log(neighbor)
-                            d3.select(this).style("fill", function(d, i) { return "pink";})
-
-                        })
+                        .on('dblclick', connectedNodes)
                         .call(this.$d3.drag()
                             .on("start", this.dragstarted)
                             .on("drag", this.dragged)
@@ -438,17 +422,40 @@
                     this.simulation.force("link")
                         .links(links); //graph.links);
 
-                    function getNeighbors(node) {
-                        return graph.links.reduce(function (neighbors, l) {
-                                if (l.target.index === node.index) {
-                                    neighbors.push(l.source.name)
-                                } else if (l.source.index === node.index) {
-                                    neighbors.push(l.target.name)
-                                }
-                                return neighbors
-                            },
-                            [node.name]
-                        )
+                    //Toggle stores whether the highlighting is on
+                    let toggle = 0;
+                    let linkedByIndex = {};
+                    for (i = 0; i < graph.nodes.length; i++) {
+                        linkedByIndex[i + "," + i] = 1;
+                    }
+                    graph.links.forEach(function (d) {
+                        linkedByIndex[d.source.index + "," + d.target.index] = 1;
+                    });
+                    function neighboring(a, b) {
+                        return linkedByIndex[a.index + "," + b.index];
+                    }
+                    function connectedNodes() {
+                        if (toggle === 0) {
+                            //Reduce the opacity of all but the neighbouring nodes
+                            d = d3.select(this).node().__data__;
+                            node.style("opacity", function (o) {
+                                return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+                            });
+                            link.style("opacity", function (o) {
+                                return d.index === o.source.index | d.index === o.target.index ? 1 : 0.1;
+                            });
+                            text.style("opacity", function (o) {
+                                return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+                            });
+                            //Reduce the op
+                            toggle = 1;
+                        } else {
+                            //Put them back to opacity=1
+                            node.style("opacity", 1);
+                            link.style("opacity", 1);
+                            text.style("opacity", 1)
+                            toggle = 0;
+                        }
                     }
 
                     function ticked() {
@@ -505,9 +512,6 @@
                     x: evt.clientX,
                     y: evt.clientY
                 }
-            },
-            isConnected(a, b) {
-                return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index];
             },
             // drag event handlers
             dragstarted(d) {
