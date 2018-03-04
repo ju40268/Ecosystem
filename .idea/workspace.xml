@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c3c369b-3666-4676-a5de-8d1700a55a86" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue-D3/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vue_laravel.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jgraph" afterPath="$PROJECT_DIR$/jgraph" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vue-D3/index.html" afterPath="$PROJECT_DIR$/Vue-D3/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vue-D3/reload.html" afterPath="$PROJECT_DIR$/Vue-D3/reload.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,41 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="angular.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angular.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="88" column="30" lean-forward="false" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vue_laravel.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue_laravel.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue-D3/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="input.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4465">
-              <caret line="697" column="1" lean-forward="false" selection-start-line="697" selection-start-column="1" selection-end-line="697" selection-end-column="1" />
+            <state relative-caret-position="361">
+              <caret line="469" column="21" lean-forward="true" selection-start-line="469" selection-start-column="21" selection-end-line="469" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -63,32 +30,22 @@
       <file leaf-file-name="reload.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Vue-D3/reload.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="162" column="89" lean-forward="false" selection-start-line="162" selection-start-column="89" selection-end-line="162" selection-end-column="89" />
+            <state relative-caret-position="359">
+              <caret line="352" column="26" lean-forward="true" selection-start-line="352" selection-start-column="26" selection-end-line="352" selection-end-column="26" />
               <folding>
-                <marker date="1520120704943" expanded="true" signature="1438:1440" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="1438:3493" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="1486:3394" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="1587:1740" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="1838:1990" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="2403:2733" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="2528:2608" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="2633:2711" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="2782:3374" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="2844:2947" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="3002:3160" ph="..." />
-                <marker date="1520120704943" expanded="true" signature="3214:3355" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="4705:4707" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="4705:7841" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="4753:7742" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="4854:5007" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="5105:5257" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="5670:6000" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="5795:5875" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="5900:5978" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="6049:7722" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="6111:7008" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="7063:7508" ph="..." />
+                <marker date="1520125107694" expanded="true" signature="7562:7703" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.min.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue-D3/bootstrap.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -96,8 +53,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="36" selection-end-column="9" />
+            <state relative-caret-position="312">
+              <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="231" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -124,9 +81,9 @@
       <find>tool</find>
       <find>update</find>
       <find>click</find>
-      <find>force</find>
       <find>textarea{font-family:inherit;font-size:inherit;line-heig</find>
       <find>reload</find>
+      <find>force</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -251,12 +208,12 @@
       <workItem from="1519181099938" duration="6571000" />
       <workItem from="1519247362643" duration="4648000" />
       <workItem from="1520023688967" duration="985000" />
-      <workItem from="1520106665354" duration="10815000" />
+      <workItem from="1520106665354" duration="14906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46655000" />
+    <option name="totallyTimeSpent" value="50746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="814" extended-state="0" />
@@ -569,34 +526,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="88" column="30" lean-forward="false" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vue_laravel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vue-D3/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4465">
-          <caret line="697" column="1" lean-forward="false" selection-start-line="697" selection-start-column="1" selection-end-line="697" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -609,14 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="36" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vue-D3/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -625,23 +550,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/angular.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue_laravel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-D3/input.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="469" column="21" lean-forward="true" selection-start-line="469" selection-start-column="21" selection-end-line="469" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="231" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Vue-D3/reload.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="162" column="89" lean-forward="false" selection-start-line="162" selection-start-column="89" selection-end-line="162" selection-end-column="89" />
+        <state relative-caret-position="359">
+          <caret line="352" column="26" lean-forward="true" selection-start-line="352" selection-start-column="26" selection-end-line="352" selection-end-column="26" />
           <folding>
-            <marker date="1520120704943" expanded="true" signature="1438:1440" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="1438:3493" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="1486:3394" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="1587:1740" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="1838:1990" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="2403:2733" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="2528:2608" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="2633:2711" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="2782:3374" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="2844:2947" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="3002:3160" ph="..." />
-            <marker date="1520120704943" expanded="true" signature="3214:3355" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="4705:4707" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="4705:7841" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="4753:7742" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="4854:5007" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="5105:5257" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="5670:6000" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="5795:5875" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="5900:5978" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="6049:7722" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="6111:7008" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="7063:7508" ph="..." />
+            <marker date="1520125107694" expanded="true" signature="7562:7703" ph="..." />
           </folding>
         </state>
       </provider>

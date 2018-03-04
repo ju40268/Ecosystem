@@ -23,7 +23,150 @@
             width: 25%;
             float: right;
         }
+        /*for index display*/
+        #node_color_index_safe{
+            position: fixed;
+            top: 300px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:green;
+        }
 
+        #node_color_index_danger{
+            position: fixed;
+            top: 350px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:red;
+        }
+
+        #node_color_index_regular{
+            position: fixed;
+            top: 400px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:yellow;
+        }
+        #node_color_label_safe{
+            position: fixed;
+            top: 300px;
+            left: 1200px;
+        }
+
+        #node_color_label_danger{
+            position: fixed;
+            top: 350px;
+            left: 1200px;
+        }
+
+        #node_color_label_regular{
+            position: fixed;
+            top: 400px;
+            left: 1200px;
+        }
+        /*for edge*/
+        /*for index display*/
+        #edge_color_index_0{
+            position: fixed;
+            top: 300px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:lime;
+        }
+
+        #edge_color_index_1{
+            position: fixed;
+            top: 350px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:orange;
+        }
+
+        #edge_color_index_2{
+            position: fixed;
+            top: 400px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:red;
+        }
+        #edge_color_index_3{
+            position: fixed;
+            top: 450px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:cyan;
+        }
+
+        #edge_color_index_4{
+            position: fixed;
+            top: 500px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:blue;
+        }
+
+        #edge_color_index_5{
+            position: fixed;
+            top: 550px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:purple;
+        }
+
+        #edge_color_index_6{
+            position: fixed;
+            top: 600px;
+            left: 1100px;
+            width:60px;
+            height:30px;
+            background:#E5E5E5;
+        }
+
+        #edge_color_label_0{
+            position: fixed;
+            top: 300px;
+            left: 1200px;
+        }
+        #edge_color_label_1{
+            position: fixed;
+            top: 350px;
+            left: 1200px;
+        }
+
+        #edge_color_label_2{
+            position: fixed;
+            top: 400px;
+            left: 1200px;
+        }
+        #edge_color_label_3{
+            position: fixed;
+            top: 450px;
+            left: 1200px;
+        }
+        #edge_color_label_4{
+            position: fixed;
+            top: 500px;
+            left: 1200px;
+        }
+        #edge_color_label_5{
+            position: fixed;
+            top: 550px;
+            left: 1200px;
+        }
+        #edge_color_label_6{
+            position: fixed;
+            top: 600px;
+            left: 1200px;
+        }
     </style>
 
 </head>
@@ -77,10 +220,31 @@
 
             <div class="tab-content clearfix">
                 <div class="tab-pane active" id="edge_color">
-                    <h3>Content's background color is the same for the tab</h3>
+                    <h4>Edge index</h4>
+                    <div id="edge_color_index_0"></div>
+                    <div id="edge_color_index_1"></div>
+                    <div id="edge_color_index_2"></div>
+                    <div id="edge_color_index_3"></div>
+                    <div id="edge_color_index_4"></div>
+                    <div id="edge_color_index_5"></div>
+                    <div id="edge_color_index_6"></div>
+                    <div id="edge_color_label_0">Group 0</div>
+                    <div id="edge_color_label_1">Group 1</div>
+                    <div id="edge_color_label_2">Group 2</div>
+                    <div id="edge_color_label_3">Group 3</div>
+                    <div id="edge_color_label_4">Group 4</div>
+                    <div id="edge_color_label_5">Group 5</div>
+                    <div id="edge_color_label_6">Group 6</div>
+
                 </div>
                 <div class="tab-pane" id="node_color">
-                    <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+                    <h4>Color index</h4>
+                    <div id="node_color_index_safe"></div>
+                    <div id="node_color_index_danger"></div>
+                    <div id="node_color_index_regular"></div>
+                    <div id="node_color_label_safe">Safe</div>
+                    <div id="node_color_label_danger">Danger</div>
+                    <div id="node_color_label_regular">Regular</div>
                 </div>
                 <div class="tab-pane" id="node_size">
                     <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
@@ -134,13 +298,45 @@
                     let nodes = graph.nodes;
                     let links = graph.links;
 
+                    let grads = svg.append("defs").selectAll("radialGradient")
+                        .data(nodes)
+                        .enter()
+                        .append("radialGradient")
+                        .attr("gradientUnits", "objectBoundingBox")
+                        .attr("cx", 0)
+                        .attr("cy", 0)
+                        .attr("r", "100%")
+                        .attr("id", function(d, i) { return "grad" + i; });
+
+                    grads.append("stop")
+                        .attr("offset", "0%")
+                        .style("stop-color", "white");
+
+                    grads.append("stop")
+                        .attr("offset", "100%")
+                        .style("stop-color",  function(d) {
+                            if(d.risk > param.thresh + 0.4) return '#ac2925';
+                            else if(param.thresh - 0.2 < d.risk && d.risk < param.thresh + 0.2) return '#f7ecb5';
+                            else return '#398439';
+                        });
+
                     let link = svg.append("g")
                         .attr("class", "links")
                         .selectAll("line")
                         .data(links) //graph.links)
                         .enter().append("line")
+                        .style("stroke", function(d){
+                            if(d.type == 0) {return 'lime'} //Breeds
+                            if(d.type == 1) {return 'orange'} //ComposedOf
+                            if(d.type == 2) {return 'red'} //ChangeSensitiveTo
+                            if(d.type == 3) {return 'cyan'} //TemporallyPrecedesOrSucceeds
+                            if(d.type == 4) {return 'blue'} //Determines
+                            if(d.type == 5) {return 'purple'} //NecessaryFor
+                            if(d.type == 6) {return '#E5E5E5'} //ProbabilisticallyDetermines
+                        })
                         .attr("stroke-width", function(d) {
-                            return Math.sqrt(d.value);
+//                            return Math.sqrt(d.value);
+                            return 3 * d.weight;
                         });
 
                     let node = svg.append("g")
@@ -152,19 +348,8 @@
                             if (param.node == 'risk') return 15 * d.risk;
                             if (param.node == 'value') return 0.3 * Math.sqrt(d.value);
                         })
-                        .attr("fill", function(d) {
-//                            if(d.risk > param.thresh + 0.4) return '#ac2925';
-//                            else if(param.thresh - 0.2 < d.risk && d.risk < param.thresh + 0.2) return '#f7ecb5';
-//                            else return '#398439';
-
-                            if(d.risk > param.thresh + 0.4) {
-                                return '#ac2925';
-                            }
-                            if(d.risk > param.thresh + 0.2 && d.risk < param.thresh + 0.4) {
-                                console.log('Yellow')
-                                return '#f7ecb5';
-                            }
-                            else return '#398439';
+                        .attr("fill", function(d, i) {
+                            return "url(#grad" + i + ")";
                         })
                         .call(this.$d3.drag()
                             .on("start", this.dragstarted)
@@ -183,7 +368,8 @@
                         .attr("fill", "#fff")
                         .style("font-family", "monospace")
                         .attr("dx", 0)
-                        .attr("dy", 0)
+                        .attr("dy", 0);
+
 
                     this.simulation
                         .nodes(graph.nodes)
