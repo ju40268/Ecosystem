@@ -17,7 +17,7 @@
 
         .nodes circle {
             stroke: #fff;
-            stroke-width: 1.5px;
+            stroke-width: 2px;
         }
         .right {
             width: 25%;
@@ -254,7 +254,7 @@
             </div>
 
 
-            <svg width="960" height="600" @mousemove="onMouseMove($event)"></svg>
+            <svg width="1000" height="600" @mousemove="onMouseMove($event)"></svg>
         </div>
       `,
         data() {
@@ -351,6 +351,24 @@
                         .attr("fill", function(d, i) {
                             return "url(#grad" + i + ")";
                         })
+                        .on("mouseover", function (d) {
+                            d3.select(this).transition()
+                                .duration(800)
+                                .attr("r", 50);
+                            if(d.value > 1500){
+                                d3.select(labels._groups[0][d.index]).style("visibility", "hidden");
+                            }
+                            else
+                                d3.select(labels._groups[0][d.index])
+                                    .style("fill", "#fff")
+                                    .style("visibility", "visible");
+                        })
+                        .on("mouseout", function () {
+                            d3.select(this).transition()
+                                .duration(1000)
+                                .attr("r", function(d) { return 2*Math.log(d.value); });
+                            return labels.style("visibility", "hidden");//})
+                        })
                         .call(this.$d3.drag()
                             .on("start", this.dragstarted)
                             .on("drag", this.dragged)
@@ -366,9 +384,18 @@
                                 return d.name
                         })
                         .attr("fill", "#fff")
-                        .style("font-family", "monospace")
                         .attr("dx", 0)
                         .attr("dy", 0);
+
+                    let labels = svg.append("g")
+                        .attr("class", "texts")
+                        .selectAll("text")
+                        .data(nodes)
+                        .enter().append("text")
+                        .text(function (d) {
+                            return d.name
+                        })
+                        .style("visibility", "hidden");
 
 
                     this.simulation
@@ -401,6 +428,13 @@
                                 return d.y;
                             });
                         text
+                            .attr('x', function (d) {
+                                return d.x
+                            })
+                            .attr('y', function (d) {
+                                return d.y
+                            });
+                        labels
                             .attr('x', function (d) {
                                 return d.x
                             })
