@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"> </script>
+    <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> </script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .links line {
@@ -26,7 +28,7 @@
         /*for index display*/
         #node_color_index_safe{
             position: fixed;
-            top: 300px;
+            top: 350px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -35,7 +37,7 @@
 
         #node_color_index_danger{
             position: fixed;
-            top: 350px;
+            top: 400px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -44,7 +46,7 @@
 
         #node_color_index_regular{
             position: fixed;
-            top: 400px;
+            top: 450px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -52,26 +54,26 @@
         }
         #node_color_label_safe{
             position: fixed;
-            top: 300px;
+            top: 350px;
             left: 1200px;
         }
 
         #node_color_label_danger{
             position: fixed;
-            top: 350px;
+            top: 400px;
             left: 1200px;
         }
 
         #node_color_label_regular{
             position: fixed;
-            top: 400px;
+            top: 450px;
             left: 1200px;
         }
         /*for edge*/
         /*for index display*/
         #edge_color_index_0{
             position: fixed;
-            top: 300px;
+            top: 350px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -80,7 +82,7 @@
 
         #edge_color_index_1{
             position: fixed;
-            top: 350px;
+            top: 400px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -89,7 +91,7 @@
 
         #edge_color_index_2{
             position: fixed;
-            top: 400px;
+            top: 450px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -97,7 +99,7 @@
         }
         #edge_color_index_3{
             position: fixed;
-            top: 450px;
+            top: 500px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -106,7 +108,7 @@
 
         #edge_color_index_4{
             position: fixed;
-            top: 500px;
+            top: 550px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -115,7 +117,7 @@
 
         #edge_color_index_5{
             position: fixed;
-            top: 550px;
+            top: 600px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -124,7 +126,7 @@
 
         #edge_color_index_6{
             position: fixed;
-            top: 600px;
+            top: 650px;
             left: 1100px;
             width:60px;
             height:30px;
@@ -133,48 +135,41 @@
 
         #edge_color_label_0{
             position: fixed;
-            top: 300px;
+            top: 350px;
             left: 1200px;
         }
         #edge_color_label_1{
             position: fixed;
-            top: 350px;
+            top: 400px;
             left: 1200px;
         }
 
         #edge_color_label_2{
             position: fixed;
-            top: 400px;
+            top: 450px;
             left: 1200px;
         }
         #edge_color_label_3{
             position: fixed;
-            top: 450px;
+            top: 500px;
             left: 1200px;
         }
         #edge_color_label_4{
             position: fixed;
-            top: 500px;
+            top: 550px;
             left: 1200px;
         }
         #edge_color_label_5{
             position: fixed;
-            top: 550px;
+            top: 600px;
             left: 1200px;
         }
         #edge_color_label_6{
             position: fixed;
-            top: 600px;
+            top: 650px;
             left: 1200px;
         }
 
-        .link-active {
-            stroke-opacity: 1;
-        }
-        .node-active{
-            stroke: #555;
-            stroke-width: 1.5px;
-        }
     </style>
 
 </head>
@@ -214,6 +209,13 @@
                 <br>
                 <br>
 
+                <div class="ui-widget">
+                   <input id="search">
+                   <button type="submit" @click="searchNode">Search</button>
+                </div>
+
+
+                <br>
                 <ul  class="nav nav-pills">
                     <li class="active"><a  href="#edge_color" data-toggle="tab">Edge Color</a></li>
                     <li><a href="#node_color" data-toggle="tab">Node Color</a>
@@ -357,14 +359,14 @@
                             if (param.node == 'risk') return 15 * d.risk;
                             if (param.node == 'value') return 0.3 * Math.sqrt(d.value);
                         })
-//                        .attr("fill", function(d, i) {
-//                            return "url(#grad" + i + ")";
-//                        })
-                        .attr("fill", function (d) {
-                            if(d.risk > param.thresh + 0.4) return '#ac2925';
-                            else if(param.thresh - 0.2 < d.risk && d.risk < param.thresh + 0.2) return '#f7ecb5';
-                            else return '#398439'
+                        .attr("fill", function(d, i) {
+                            return "url(#grad" + i + ")";
                         })
+//                        .attr("fill", function (d) {
+//                            if(d.risk > param.thresh + 0.4) return '#ac2925';
+//                            else if(param.thresh - 0.2 < d.risk && d.risk < param.thresh + 0.2) return '#f7ecb5';
+//                            else return '#398439'
+//                        })
                         .on("mouseover", function (d) {
                             d3.select(this).transition()
                                 .duration(800)
@@ -412,9 +414,6 @@
                         })
                         .style("visibility", "hidden");
 
-
-
-
                     this.simulation
                         .nodes(graph.nodes)
                         .on("tick", ticked);
@@ -422,6 +421,7 @@
                     this.simulation.force("link")
                         .links(links); //graph.links);
 
+                    // for the connected graph
                     //Toggle stores whether the highlighting is on
                     let toggle = 0;
                     let linkedByIndex = {};
@@ -447,16 +447,31 @@
                             text.style("opacity", function (o) {
                                 return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
                             });
+                            labels.style("opacity", function (o) {
+                                return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+                            }).style("fill", "#fff").style("visibility", "visible");
                             //Reduce the op
                             toggle = 1;
                         } else {
-                            //Put them back to opacity=1
+                            //Put them back to opacity = 1
                             node.style("opacity", 1);
                             link.style("opacity", 1);
                             text.style("opacity", 1)
                             toggle = 0;
                         }
                     }
+
+                 // for the auto-complete
+                    let optArray = [];
+                    for (i = 0; i < graph.nodes.length - 1; i++) {
+                        optArray.push(graph.nodes[i].name);
+                    }
+                    optArray = optArray.sort();
+                    $(function () {
+                        $("#search").autocomplete({
+                            source: optArray
+                        });
+                    });
 
                     function ticked() {
                         link
@@ -497,6 +512,11 @@
 
                     }
                 })
+            },
+            searchNode(d){
+                //
+                console.log(" ####### in auto-complete ###### ")
+                console.log(d.value)
             },
             reload(param) {
                 console.log('reloading...');
