@@ -1,0 +1,698 @@
+{
+  "nodes": [
+      {
+  		"name": "Age",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "AirlineTicketBoardingPass",
+		"risk": "0.05",
+		"value": "500"
+	},
+    {
+		"name": "Allergies",
+		"risk": "0.4",
+		"value": "250"
+	},
+    {
+		"name": "AstrologicalSign",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "AutomobileLocatorOnStarAccount",
+		"risk": "0.1",
+		"value": "5000"
+	},
+    {
+		"name": "BankAccount",
+		"risk": "0.09",
+		"value": "25000"
+	},
+    {
+		"name": "BankAccountNumber",
+		"risk": "0.8",
+		"value": "5000"
+	},
+    {
+		"name": "BirthCertificate",
+		"risk": "0.05",
+		"value": "1000"
+	},
+    {
+		"name": "BloodSample",
+		"risk": "0.1",
+		"value": "2000"
+	},
+    {
+		"name": "BloodType",
+		"risk": "0.4",
+		"value": "100"
+	},
+    {
+		"name": "BodyDimensionsMeasurements",
+		"risk": "0.6",
+		"value": "1000"
+	},
+    {
+		"name": "CACCard",
+		"risk": "0.1",
+		"value": "2000"
+	},
+    {
+		"name": "CertificateOfUSCitizenship",
+		"risk": "0.1",
+		"value": "1000"
+	},
+    {
+		"name": "Citizenship",
+		"risk": "0.9",
+		"value": "100"
+	},
+    {
+		"name": "CivilSuitRecords",
+		"risk": "0.95",
+		"value": "1000"
+	},
+    {
+		"name": "CollegeAttended",
+		"risk": "0.7",
+		"value": "100"
+	},
+    {
+		"name": "CollegeDegree",
+		"risk": "0.65",
+		"value": "100"
+	},
+    {
+		"name": "CreditCardNumber",
+		"risk": "0.8",
+		"value": "10000"
+	},
+    {
+		"name": "CreditDebitCard",
+		"risk": "0.1",
+		"value": "20000"
+	},
+    {
+		"name": "CreditScore",
+		"risk": "0.4",
+		"value": "500"
+	},
+    {
+		"name": "CustomerLoyaltyCards",
+		"risk": "0.15",
+		"value": "2000"
+	},
+    {
+		"name": "DateOfBirth",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "DependantsInsuranceIDCard",
+		"risk": "0.1",
+		"value": "2500"
+	},
+    {
+		"name": "DivorceDecree",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "DNA",
+		"risk": "0.06",
+		"value": "20000"
+	},
+    {
+		"name": "DrivingLicense",
+		"risk": "0.09",
+		"value": "1000"
+	},
+    {
+		"name": "EmailAccount",
+		"risk": "0.3",
+		"value": "3000"
+	},
+    {
+		"name": "EmailId",
+		"risk": "0.9",
+		"value": "200"
+	},
+    {
+		"name": "EmployeeId",
+		"risk": "0.2",
+		"value": "1000"
+	},
+    {
+		"name": "EmployeeIdCard",
+		"risk": "0.05",
+		"value": "2000"
+	},
+    {
+		"name": "Employer",
+		"risk": "0.7",
+		"value": "100"
+	},
+    {
+		"name": "Ethnicity",
+		"risk": "0.9",
+		"value": "200"
+	},
+    {
+		"name": "ExSpouseName",
+		"risk": "0.4",
+		"value": "200"
+	},
+    {
+		"name": "EyeColor",
+		"risk": "0.9",
+		"value": "100"
+	},
+    {
+		"name": "FacilityAccessCard",
+		"risk": "0.05",
+		"value": "5000"
+	},
+    {
+		"name": "Fingerprint",
+		"risk": "0.2",
+		"value": "2000"
+	},
+    {
+		"name": "Gender",
+		"risk": "0.95",
+		"value": "100"
+	},
+    {
+		"name": "HairColor",
+		"risk": "0.95",
+		"value": "100"
+	},
+    {
+		"name": "HealthInsuranceCard",
+		"risk": "0.1",
+		"value": "2500"
+	},
+    {
+		"name": "Height",
+		"risk": "0.95",
+		"value": "100"
+	},
+    {
+		"name": "Hometown",
+		"risk": "0.8",
+		"value": "200"
+	},
+    {
+		"name": "InsuranceId",
+		"risk": "0.3",
+		"value": "1500"
+	},
+    {
+		"name": "InternetSurfingHistoryPatterns",
+		"risk": "0.3",
+		"value": "2500"
+	},
+    {
+		"name": "Last4DigitsOfSSN",
+		"risk": "0.4",
+		"value": "2500"
+	},
+    {
+		"name": "Lawsuits",
+		"risk": "0.9",
+		"value": "1000"
+	},
+    {
+		"name": "LifestylePatterns",
+		"risk": "0.3",
+		"value": "2500"
+	},
+    {
+		"name": "MaidenName",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "MedicaidCard",
+		"risk": "0.1",
+		"value": "2500"
+	},
+    {
+		"name": "MedicalHistory",
+		"risk": "0.2",
+		"value": "6000"
+	},
+    {
+		"name": "MedicareCard",
+		"risk": "0.1",
+		"value": "2500"
+	},
+    {
+		"name": "MilitaryId",
+		"risk": "0.05",
+		"value": "5000"
+	},
+    {
+		"name": "MilitaryRank",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "MilitaryServiceRecord",
+		"risk": "0.08",
+		"value": "2000"
+	},
+    {
+		"name": "MobilePhoneUsagePatterns",
+		"risk": "0.3",
+		"value": "2500"
+	},
+    {
+		"name": "MortgageeId",
+		"risk": "0.7",
+		"value": "100"
+	},
+    {
+		"name": "MothersMaidenName",
+		"risk": "0.5",
+		"value": "100"
+	},
+    {
+		"name": "Name",
+		"risk": "0.99",
+		"value": "100"
+	},
+    {
+		"name": "NameOfYourInsurer",
+		"risk": "0.5",
+		"value": "200"
+	},
+    {
+		"name": "NamesOfYourDoctors",
+		"risk": "0.3",
+		"value": "1000"
+	},
+    {
+		"name": "Occupation",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "OfflineSocialNetwork",
+		"risk": "0.2",
+		"value": "100"
+	},
+    {
+		"name": "OnlinePurchasingPatterns",
+		"risk": "0.4",
+		"value": "2500"
+	},
+    {
+		"name": "OtherPassport",
+		"risk": "0.3",
+		"value": "5000"
+	},
+    {
+		"name": "ParentsName",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "ParentsOccupations",
+		"risk": "0.7",
+		"value": "100"
+	},
+    {
+		"name": "PhoneNumber",
+		"risk": "0.9",
+		"value": "500"
+	},
+    {
+		"name": "Photograph",
+		"risk": "0.9",
+		"value": "100"
+	},
+    {
+		"name": "PrescriptionNumber",
+		"risk": "0.2",
+		"value": "2000"
+	},
+    {
+		"name": "ProfessionalGroupAffiliations",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "ProfessionalRegistrationNumber",
+		"risk": "0.7",
+		"value": "100"
+	},
+    {
+		"name": "PublicAssistanceCards",
+		"risk": "0.1",
+		"value": "2500"
+	},
+    {
+		"name": "ResidentialAddress",
+		"risk": "0.8",
+		"value": "500"
+	},
+    {
+		"name": "ResidentialAddressProof",
+		"risk": "0.2",
+		"value": "1000"
+	},
+    {
+		"name": "Scars",
+		"risk": "0.3",
+		"value": "300"
+	},
+    {
+		"name": "SchoolsYouHaveAttended",
+		"risk": "0.6",
+		"value": "100"
+	},
+    {
+		"name": "SecurityClearanceLevel",
+		"risk": "0.09",
+		"value": "2000"
+	},
+    {
+		"name": "ShoppingPatterns",
+		"risk": "0.3",
+		"value": "2500"
+	},
+    {
+		"name": "Signature",
+		"risk": "0.7",
+		"value": "2500"
+	},
+    {
+		"name": "SocialNetworkAccount",
+		"risk": "0.2",
+		"value": "3000"
+	},
+    {
+		"name": "SocialNetworkId",
+		"risk": "0.9",
+		"value": "100"
+	},
+    {
+		"name": "SocialSecurityCard",
+		"risk": "0.02",
+		"value": "5000"
+	},
+    {
+		"name": "SocialSecurityNumber",
+		"risk": "0.1",
+		"value": "5000"
+	},
+    {
+		"name": "SpouseName",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "StudentId",
+		"risk": "0.1",
+		"value": "1000"
+	},
+    {
+		"name": "StudentLoanNumber",
+		"risk": "0.1",
+		"value": "100"
+	},
+    {
+		"name": "Tattoos",
+		"risk": "0.6",
+		"value": "100"
+	},
+    {
+		"name": "TransportationPassesTickets",
+		"risk": "0.3",
+		"value": "200"
+	},
+    {
+		"name": "TravelPatterns",
+		"risk": "0.3",
+		"value": "1000"
+	},
+    {
+		"name": "USPassport",
+		"risk": "0.02",
+		"value": "10000"
+	},
+    {
+		"name": "UtilityAccounts",
+		"risk": "0.5",
+		"value": "1000"
+	},
+    {
+		"name": "VehicleInsurer",
+		"risk": "0.6",
+		"value": "100"
+	},
+    {
+		"name": "VehicleLoanNumber",
+		"risk": "0.1",
+		"value": "100"
+	},
+    {
+		"name": "VehicleRegistrationLicensePlate",
+		"risk": "0.8",
+		"value": "100"
+	},
+    {
+		"name": "Visa",
+		"risk": "0.05",
+		"value": "5000"
+	},
+    {
+		"name": "ZipCode",
+		"risk": "0.9",
+		"value": "100"
+	}
+	  ],
+  "links": [
+    {"source": 25, "target":  0, "weight": 0.95, "type": 6},
+    {"source": 66, "target":  0, "weight": 0.85, "type": 6},
+    {"source": 21, "target":  0, "weight": 0.95, "type": 6},
+    {"source": 39, "target":  0, "weight": 0.85, "type": 6},
+    {"source": 48, "target":  2, "weight": 0.8, "type": 6},
+    {"source": 29, "target":  2, "weight": 0.5, "type": 6},
+    {"source": 38, "target":  2, "weight": 0.8, "type": 6},
+    {"source": 21, "target":  3, "weight": 0.95, "type": 6},
+    {"source": 81, "target":  5, "weight": 0.2, "type": 6},
+    {"source": 55, "target":  5, "weight": 0.3, "type": 6},
+    {"source": 81, "target":  6, "weight": 0.9, "type": 6},
+    {"source": 25, "target":  7, "weight": 0.7, "type": 6},
+    {"source": 29, "target":  9, "weight": 0.7, "type": 6},
+    {"source": 38, "target":  9, "weight": 0.99, "type": 6},
+    {"source": 66, "target": 10, "weight": 0.85, "type": 6},
+    {"source": 38, "target": 10, "weight": 0.75, "type": 6},
+    {"source": 88, "target": 13, "weight": 0.99, "type": 6},
+    {"source": 25, "target": 13, "weight": 0.95, "type": 6},
+    {"source": 62, "target": 13, "weight": 0.99, "type": 6},
+    {"source": 88, "target": 14, "weight": 0.99, "type": 6},
+    {"source": 25, "target": 14, "weight": 0.99, "type": 6},
+    {"source": 84, "target": 15, "weight": 0.9, "type": 6},
+    {"source": 15, "target": 16, "weight": 0.99, "type": 6},
+    {"source": 38, "target": 17, "weight": 0.85, "type": 6},
+    {"source": 82, "target": 18, "weight": 0.3, "type": 6},
+    {"source": 63, "target": 18, "weight": 0.3, "type": 6},
+    {"source": 74, "target": 18, "weight": 0.25, "type": 6},
+    {"source": 55, "target": 18, "weight": 0.3, "type": 6},
+    {"source": 18, "target": 19, "weight": 0.95, "type": 6},
+    {"source": 38, "target": 21, "weight": 0.95, "type": 6},
+    {"source":  7, "target": 21, "weight": 0.99, "type": 6},
+    {"source": 78, "target": 21, "weight": 0.95, "type": 6},
+    {"source": 81, "target": 21, "weight": 0.99, "type": 6},
+    {"source": 88, "target": 21, "weight": 0.99, "type": 6},
+    {"source": 38, "target": 22, "weight": 0.65, "type": 6},
+    {"source": 56, "target": 23, "weight": 0.95, "type": 6},
+    {"source":  8, "target": 24, "weight": 0.75, "type": 6},
+    {"source": 81, "target": 25, "weight": 0.5, "type": 6},
+    {"source": 82, "target": 26, "weight": 0.5, "type": 6},
+    {"source": 55, "target": 26, "weight": 0.5, "type": 6},
+    {"source": 26, "target": 27, "weight": 0.99, "type": 6},
+    {"source": 38, "target": 27, "weight": 0.95, "type": 6},
+    {"source": 34, "target": 30, "weight": 0.95, "type": 6},
+    {"source": 28, "target": 30, "weight": 0.9, "type": 6},
+    {"source": 29, "target": 30, "weight": 0.95, "type": 6},
+    {"source": 38, "target": 30, "weight": 0.99, "type": 6},
+    {"source": 56, "target": 31, "weight": 0.95, "type": 6},
+    {"source": 78, "target": 32, "weight": 0.6, "type": 6},
+    {"source": 24, "target": 33, "weight": 0.99, "type": 6},
+    {"source": 66, "target": 33, "weight": 0.99, "type": 6},
+    {"source": 38, "target": 33, "weight": 0.99, "type": 6},
+    {"source": 31, "target": 33, "weight": 0.95, "type": 6},
+    {"source": 38, "target": 35, "weight": 0.4, "type": 6},
+    {"source": 66, "target": 36, "weight": 0.96, "type": 6},
+    {"source": 38, "target": 36, "weight": 0.96, "type": 6},
+    {"source": 24, "target": 37, "weight": 0.97, "type": 6},
+    {"source":  0, "target": 37, "weight": 0.96, "type": 6},
+    {"source": 66, "target": 37, "weight": 0.97, "type": 6},
+    {"source": 31, "target": 37, "weight": 0.96, "type": 6},
+    {"source": 81, "target": 38, "weight": 0.5, "type": 6},
+    {"source": 47, "target": 38, "weight": 0.4, "type": 6},
+    {"source": 49, "target": 38, "weight": 0.4, "type": 6},
+    {"source": 25, "target": 38, "weight": 0.4, "type": 6},
+    {"source": 38, "target": 39, "weight": 0.99, "type": 6},
+    {"source": 88, "target": 40, "weight": 0.85, "type": 6},
+    {"source": 62, "target": 40, "weight": 0.85, "type": 6},
+    {"source": 81, "target": 41, "weight": 0.4, "type": 6},
+    {"source": 38, "target": 41, "weight": 0.8, "type": 6},
+    {"source": 25, "target": 41, "weight": 0.6, "type": 6},
+    {"source": 26, "target": 42, "weight": 0.5, "type": 6},
+    {"source": 80, "target": 43, "weight": 0.99, "type": 6},
+    {"source": 81, "target": 43, "weight": 0.99, "type": 6},
+    {"source": 88, "target": 44, "weight": 0.99, "type": 6},
+    {"source": 81, "target": 44, "weight": 0.95, "type": 6},
+    {"source": 25, "target": 44, "weight": 0.99, "type": 6},
+    {"source": 89, "target": 45, "weight": 0.5, "type": 6},
+    {"source": 44, "target": 46, "weight": 0.95, "type": 6},
+    {"source": 38, "target": 46, "weight": 0.9, "type": 6},
+    {"source": 23, "target": 46, "weight": 0.99, "type": 6},
+    {"source": 81, "target": 47, "weight": 0.5, "type": 6},
+    {"source": 38, "target": 47, "weight": 0.4, "type": 6},
+    {"source": 25, "target": 47, "weight": 0.45, "type": 6},
+    {"source": 88, "target": 48, "weight": 0.5, "type": 6},
+    {"source": 25, "target": 48, "weight": 0.5, "type": 6},
+    {"source": 38, "target": 48, "weight": 0.45, "type": 6},
+    {"source": 81, "target": 49, "weight": 0.5, "type": 6},
+    {"source": 38, "target": 49, "weight": 0.4, "type": 6},
+    {"source": 25, "target": 49, "weight": 0.45, "type": 6},
+    {"source": 26, "target": 51, "weight": 0.84, "type": 6},
+    {"source": 52, "target": 51, "weight": 0.99, "type": 6},
+    {"source": 78, "target": 51, "weight": 0.9, "type": 6},
+    {"source": 25, "target": 52, "weight": 0.2, "type": 6},
+    {"source": 81, "target": 54, "weight": 0.95, "type": 6},
+    {"source": 25, "target": 54, "weight": 0.9, "type": 6},
+    {"source": 71, "target": 54, "weight": 0.95, "type": 6},
+    {"source": 78, "target": 55, "weight": 0.9, "type": 6},
+    {"source": 70, "target": 56, "weight": 0.99, "type": 6},
+    {"source":  7, "target": 56, "weight": 0.99, "type": 6},
+    {"source": 11, "target": 56, "weight": 0.99, "type": 6},
+    {"source": 80, "target": 56, "weight": 0.99, "type": 6},
+    {"source": 81, "target": 56, "weight": 0.99, "type": 6},
+    {"source": 25, "target": 57, "weight": 0.65, "type": 6},
+    {"source": 38, "target": 57, "weight": 0.95, "type": 6},
+    {"source": 38, "target": 58, "weight": 0.85, "type": 6},
+    {"source": 26, "target": 59, "weight": 0.9, "type": 6},
+    {"source": 78, "target": 59, "weight": 0.95, "type": 6},
+    {"source": 53, "target": 60, "weight": 0.7, "type": 6},
+    {"source": 26, "target": 61, "weight": 0.5, "type": 6},
+    {"source": 78, "target": 64, "weight": 0.9, "type": 6},
+    {"source": 81, "target": 65, "weight": 0.91, "type": 6},
+    {"source": 38, "target": 65, "weight": 0.95, "type": 6},
+    {"source": 30, "target": 65, "weight": 0.95, "type": 6},
+    {"source": 70, "target": 66, "weight": 0.95, "type": 6},
+    {"source": 50, "target": 66, "weight": 0.99, "type": 6},
+    {"source": 78, "target": 66, "weight": 0.95, "type": 6},
+    {"source": 18, "target": 66, "weight": 0.95, "type": 6},
+    {"source": 25, "target": 66, "weight": 0.99, "type": 6},
+    {"source": 38, "target": 67, "weight": 0.97, "type": 6},
+    {"source": 26, "target": 68, "weight": 0.85, "type": 6},
+    {"source": 78, "target": 68, "weight": 0.9, "type": 6},
+    {"source": 30, "target": 69, "weight": 0.95, "type": 6},
+    {"source": 70, "target": 71, "weight": 0.99, "type": 6},
+    {"source": 38, "target": 71, "weight": 0.99, "type": 6},
+    {"source": 72, "target": 71, "weight": 0.99, "type": 6},
+    {"source": 43, "target": 71, "weight": 0.9, "type": 6},
+    {"source": 81, "target": 71, "weight": 0.99, "type": 6},
+    {"source": 66, "target": 73, "weight": 0.4, "type": 6},
+    {"source": 38, "target": 73, "weight": 0.5, "type": 6},
+    {"source": 30, "target": 75, "weight": 0.15, "type": 6},
+    {"source": 20, "target": 76, "weight": 0.7, "type": 6},
+    {"source": 86, "target": 76, "weight": 0.4, "type": 6},
+    {"source": 87, "target": 76, "weight": 0.4, "type": 6},
+    {"source": 18, "target": 77, "weight": 0.95, "type": 6},
+    {"source": 26, "target": 78, "weight": 0.9, "type": 6},
+    {"source": 55, "target": 78, "weight": 0.4, "type": 6},
+    {"source": 80, "target": 81, "weight": 0.99, "type": 6},
+    {"source": 78, "target": 82, "weight": 0.95, "type": 6},
+    {"source": 79, "target": 82, "weight": 0.85, "type": 6},
+    {"source": 18, "target": 84, "weight": 0.5, "type": 6},
+    {"source":  6, "target": 84, "weight": 0.3, "type": 6},
+    {"source": 66, "target": 85, "weight": 0.7, "type": 6},
+    {"source":  1, "target": 87, "weight": 0.4, "type": 6},
+    {"source": 92, "target": 87, "weight": 0.5, "type": 6},
+    {"source": 53, "target": 87, "weight": 0.6, "type": 6},
+    {"source": 86, "target": 87, "weight": 0.5, "type": 6},
+    {"source":  4, "target": 87, "weight": 0.8, "type": 6},
+    {"source": 92, "target": 90, "weight": 0.99, "type": 6},
+    {"source": 92, "target": 91, "weight": 0.99, "type": 6},
+    {"source": 88, "target": 93, "weight": 0.99, "type": 6},
+    {"source": 62, "target": 93, "weight": 0.99, "type": 6},
+    {"source": 72, "target": 94, "weight": 0.95, "type": 6},
+    {"source": 15, "target": 94, "weight": 0.95, "type": 6},
+    {"source": 20, "target": 94, "weight": 0.95, "type": 6},
+    {"source": 87, "target": 94, "weight": 0.95, "type": 6},
+	{"source":  7, "target": 62, "weight": 0.95, "type": 5},
+	{"source":  7, "target": 88, "weight": 0.95, "type": 5},
+	{"source": 56, "target": 62, "weight": 0.95, "type": 5},
+	{"source": 56, "target": 80, "weight": 0.95, "type": 5},
+	{"source": 72, "target": 80, "weight": 0.95, "type": 5},
+	{"source": 72, "target":  7, "weight": 0.95, "type": 5},
+	{"source": 72, "target": 88, "weight": 0.95, "type": 5},
+	{"source": 80, "target":  7, "weight": 0.95, "type": 5},
+	{"source": 80, "target": 25, "weight": 0.95, "type": 5},
+	{"source":  6, "target": 18, "weight": 0.95, "type": 5},
+	{"source": 72, "target": 18, "weight": 0.95, "type": 5},
+	{"source": 84, "target": 15, "weight": 0.95, "type": 5},
+	{"source": 65, "target": 18, "weight": 0.95, "type": 5},
+	{"source": 15, "target": 16, "weight": 0.95, "type": 5},
+	{"source": 15, "target": 83, "weight": 0.95, "type": 5},
+	{"source": 30, "target": 34, "weight": 0.95, "type": 5},
+	{"source": 30, "target": 28, "weight": 0.95, "type": 5},
+	{"source": 84, "target": 16, "weight": 0.95, "type": 3},
+	{"source": 72, "target": 25, "weight": 0.95, "type": 2},
+	{"source": 72, "target": 94, "weight": 0.95, "type": 2},
+	{"source": 30, "target": 34, "weight": 0.95, "type": 2},
+	{"source":  0, "target": 37, "weight": 0.95, "type": 2},
+	{"source":  0, "target": 66, "weight": 0.95, "type": 2},
+	{"source": 87, "target": 76, "weight": 0.95, "type": 2},
+	{"source":  0, "target": 39, "weight": 0.95, "type": 2},
+	{"source": 81, "target": 88, "weight": 0.95, "type": 0},
+	{"source": 81, "target": 89, "weight": 0.95, "type": 0},
+	{"source": 81, "target": 65, "weight": 0.95, "type": 0},
+	{"source":  7, "target": 12, "weight": 0.95, "type": 0},
+	{"source":  7, "target": 25, "weight": 0.95, "type": 0},
+	{"source":  7, "target": 62, "weight": 0.95, "type": 0},
+	{"source": 25, "target":  7, "weight": 0.95, "type": 0},
+	{"source": 62, "target": 80, "weight": 0.95, "type": 0},
+	{"source": 62, "target": 93, "weight": 0.95, "type": 0},
+	{"source": 72, "target": 80, "weight": 0.95, "type": 0},
+	{"source": 72, "target":  7, "weight": 0.95, "type": 0},
+	{"source": 72, "target": 88, "weight": 0.95, "type": 0},
+	{"source": 80, "target":  5, "weight": 0.95, "type": 0},
+	{"source": 80, "target":  7, "weight": 0.95, "type": 0},
+	{"source": 80, "target": 17, "weight": 0.95, "type": 0},
+	{"source": 80, "target": 25, "weight": 0.95, "type": 0},
+	{"source": 88, "target":  7, "weight": 0.95, "type": 0},
+	{"source": 88, "target": 25, "weight": 0.95, "type": 0},
+	{"source": 88, "target": 80, "weight": 0.95, "type": 0},
+	{"source": 88, "target": 93, "weight": 0.95, "type": 0},
+	{"source": 72, "target": 18, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 18, "weight": 0.95, "type": 0},
+	{"source": 18, "target": 38, "weight": 0.95, "type": 0},
+	{"source":  6, "target": 18, "weight": 0.95, "type": 0},
+	{"source": 88, "target": 18, "weight": 0.95, "type": 0},
+	{"source": 62, "target": 18, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 70, "weight": 0.95, "type": 0},
+	{"source": 88, "target": 70, "weight": 0.95, "type": 0},
+	{"source": 71, "target": 70, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 16, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 29, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 80, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 84, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 88, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 89, "weight": 0.95, "type": 0},
+	{"source": 25, "target":  5, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 12, "weight": 0.95, "type": 0},
+	{"source": 25, "target": 72, "weight": 0.95, "type": 0}
+  ]
+}

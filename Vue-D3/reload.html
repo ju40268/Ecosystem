@@ -204,14 +204,14 @@
                 </select>
                 <br>
                 <br>
-                <button class="btn-primary" @click="reload({'thresh': choose_by_threshold, 'node': choose_by_node_attr})">Submit Parameters</button>
+                <button class="btn-primary" @click="reload({'thresh': choose_by_threshold, 'node': choose_by_node_attr, 'select_node': undefined})">Submit Parameters</button>
                 <!--<button @click="reload({'thresh': choose_by_threshold, 'node': choose_by_node_attr})">Change Node Size</button>-->
                 <br>
                 <br>
 
                 <div class="ui-widget">
-                   <input id="search">
-                   <button type="submit" @click="searchNode">Search</button>
+                   <input id="search" placeholder="Node name">
+                   <button type="submit" @click="searchNode({'thresh': choose_by_threshold, 'node': choose_by_node_attr, 'select_node': undefined})">Search</button>
                 </div>
 
 
@@ -254,7 +254,7 @@
                     <div id="node_color_label_regular">Regular</div>
                 </div>
                 <div class="tab-pane" id="node_size">
-                    <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+                    <h3>Node Size</h3>
                 </div>
             </div>
 
@@ -295,12 +295,11 @@
                         return -Math.pow(d.risk, 3);
                     }))
                     .force("center", this.$d3.forceCenter(width / 2, height / 2));
-                let color = this.$d3.scaleOrdinal(this.$d3.schemeCategory20);
-
-
 
                 // the default params
-                if (param == undefined) param = {'thresh': 0.33, 'node': 'risk'};
+                if (param === undefined) param = {'thresh': 0.33, 'node': 'risk'};
+                console.log(" ####### param here ####### ");
+                console.log(param);
 
 
                 $.getJSON('input.json', (graph) => {
@@ -309,6 +308,7 @@
                     let nodes = graph.nodes;
                     let links = graph.links;
 
+                    // for all the 3D looking effect
                     let grads = svg.append("defs").selectAll("radialGradient")
                         .data(nodes)
                         .enter()
@@ -371,6 +371,7 @@
                             d3.select(this).transition()
                                 .duration(800)
                                 .attr("r", 50);
+
                             if(d.value > 1500){
                                 d3.select(labels._groups[0][d.index]).style("visibility", "hidden");
                             }
@@ -422,7 +423,7 @@
                         .links(links); //graph.links);
 
                     // for the connected graph
-                    //Toggle stores whether the highlighting is on
+                    // Toggle stores whether the highlighting is on
                     let toggle = 0;
                     let linkedByIndex = {};
                     for (i = 0; i < graph.nodes.length; i++) {
@@ -456,7 +457,8 @@
                             //Put them back to opacity = 1
                             node.style("opacity", 1);
                             link.style("opacity", 1);
-                            text.style("opacity", 1)
+                            text.style("opacity", 1);
+                            labels.style("opacity", 1);
                             toggle = 0;
                         }
                     }
@@ -472,6 +474,30 @@
                             source: optArray
                         });
                     });
+
+                    if (param.select_node !== undefined) searchNode();
+
+                    function searchNode() {
+                        //
+                        console.log(" #### reload research node ######");
+                        //
+                        this.$svg.empty();
+//                        let node = svg.selectAll("nodes");
+//                        console.log(node)
+//                        let selected = node.filter(function (d, i) {
+//                            console.log(d)
+//                            return d.name != param.select_node;
+//                        });
+//                        console.log(" ##### selected ###### ");
+//                        console.log(selected)
+//                        svg.selectAll("nodes").style("opacity", "0");
+//                        selected.style("opacity", "0");
+//                        let link = svg.selectAll(".link")
+//                        link.style("opacity", "0");
+//                        d3.selectAll("node, link").transition()
+//                            .duration(5000)
+//                            .style("opacity", 1);
+                    }
 
                     function ticked() {
                         link
@@ -513,12 +539,14 @@
                     }
                 })
             },
-            searchNode(d){
-                //
+            searchNode: function (param) {
                 console.log(" ####### in auto-complete ###### ")
-                console.log(d.value)
+                let selectedVal = document.getElementById('search').value;
+                console.log( " ##### select val #####  " + selectedVal);
+                param.select_node = selectedVal;
+                this.reload(param);
             },
-            reload(param) {
+            reload: function (param) {
                 console.log('reloading...');
                 console.log('##### the param in reload #####');
                 console.log(param);
