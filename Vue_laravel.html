@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NBA Anaylsis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
+<div id="pie" style="width:90%;height:250px;"></div>
 
+
+<script>
+    let data = [{
+        values: [18880, 2567, 1978, 1057, 1048, 926, 476, 439, 411, 395],
+        labels: ['Jump Shot', 'Layup Shot', 'Driving Layup Shot', 'Turnaround Jump Shot', 'Fadeaway Jump Shot', 'Running Jump Shot', 'Pullup Jump shot', 'Turnaround Fadeaway shot', 'Slam Dunk Shot', 'Reverse Layup Shot'],
+        domain: {
+            x: [0, .80]
+        },
+        name: 'Kobe Action Type',
+        hoverinfo: 'label+percent+name',
+        hole: .4,
+        type: 'pie'
+    }];
+
+    let layout = {
+        title: 'Kobe Action Type',
+        annotations: [
+            {
+                font: {
+                    size: 20
+                },
+                showarrow: false,
+                text: 'ActionType',
+                x: 0.4,
+                y: 0.5
+            }
+        ],
+        height: 800,
+        width: 800
+    };
+    Plotly.newPlot('pie', data, layout);
+</script>
 </body>
 </html>
